@@ -1,0 +1,4 @@
+model_name_or_path: /mnt/e/PyCharm/PreTrainModel/qwen_7b_chat_lora_merge
+template: qwen
+infer_backend: vllm
+vllm_enforce_eager: true

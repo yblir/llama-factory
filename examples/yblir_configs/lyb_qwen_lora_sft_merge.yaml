@@ -1,0 +1,14 @@
+# Note: DO NOT use quantized model or quantization_bit when merging lora adapters
+
+# model
+model_name_or_path: /mnt/e/PyCharm/PreTrainModel/qwen_7b_chat
+adapter_name_or_path: /mnt/e/PyCharm/insteresting/LLaMA-Factory-0.7.1/src/saves/qwen_7b_chat_sft/checkpoint-200
+template: qwen
+finetuning_type: lora
+
+# export
+export_dir: /mnt/e/PyCharm/PreTrainModel/qwen_7b_chat_lora_merge
+export_size: 2
+export_device: cpu
+# 为true,保存为safetensors格式
+export_legacy_format: true
