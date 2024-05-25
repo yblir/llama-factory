@@ -1,0 +1,21 @@
+# model
+model_name_or_path: /mnt/e/PyCharm/PreTrainModel/qwen_7b
+#adapter_name_or_path: saves/llama3-8b/lora/sft
+infer_backend: vllm
+# method
+finetuning_type: lora
+
+# dataset
+#task: mmlu
+task: /mnt/e/GitHub/llama-factory/evaluation/ceval
+split: test
+#template: fewshot
+template: qwen
+lang: zh
+n_shot: 5
+
+# output
+save_dir: saves/qwen/eval3_vllm
+
+# eval
+batch_size: 2
