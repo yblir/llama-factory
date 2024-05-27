@@ -35,12 +35,12 @@ if __name__ == '__main__':
         print(res[0].response_text)
         if (i + 1) % 100 == 0:
             logger.info(f'当前完成: {i + 1}')
-            sys.exit()
-        if i + 1 == 1000:
+            # sys.exit()
+        if i + 1 == 300:
             break
 
-    json_data = json.dumps(predict_1000, indent=4, ensure_ascii=False)
-    with open('saves/predict_1000_5.json', 'w', encoding='utf-8') as f:
-        f.write(json_data)
+    # json_data = json.dumps(predict_1000, indent=4, ensure_ascii=False)
+    # with open('saves2/qwen_7b_chat_lora_merge_vllm.json', 'w', encoding='utf-8') as f:
+    #     f.write(json_data)
 
-    logger.success(f'写入完成, 总耗时:{total_time},平均耗时: {round((total_time / 1000), 5)} s')
+    logger.success(f'写入完成, 总耗时:{total_time},平均耗时: {round((total_time / 300), 5)} s')

@@ -1,4 +1,13 @@
-model_name_or_path: /mnt/e/PyCharm/PreTrainModel/qwen_7b_chat_lora_merge
+#model_name_or_path: /mnt/e/PyCharm/PreTrainModel/qwen_7b_chat_lora_merge
+#model_name_or_path: /mnt/e/PyCharm/PreTrainModel/qwen_7b_awq_int4_GEMM
+#model_name_or_path: /mnt/e/PyCharm/PreTrainModel/qwen_7b_awq_int4_GEMV
+#model_name_or_path: /mnt/e/PyCharm/PreTrainModel/qwen_7b_chat_gptq_int8
+model_name_or_path: /mnt/e/PyCharm/PreTrainModel/qwen_7b_chat_gptq_int4
+
+
 template: qwen
-#infer_backend: vllm
+
+#quantization_bit: 8
+
+infer_backend: vllm
 vllm_enforce_eager: true
