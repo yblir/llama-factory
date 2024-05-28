@@ -32,9 +32,12 @@ def preprocess(data_path_):
 
 if __name__ == '__main__':
     # Specify paths and hyperparameters for quantization
-    model_path = "your_model_path"
-    quant_path = "your_quantized_model_path"
-    data_path = ''
+    model_path = "/mnt/e/PyCharm/PreTrainModel/qwen_7b_chat_lora_merge"
+    quant_path = "/mnt/e/PyCharm/PreTrainModel/qwen_7b_chat_lora_merge_gptq_4_test2"
+    data_path = '/mnt/e/PyCharm/insteresting/LLaMA-Factory-0.7.1/data/qwen-7b-sql-gptq.json'
+
+    # with open(data_path, 'r', encoding='utf-8') as f:
+    #     messages = json.load(f)
 
     quant_config = {"zero_point": True, "q_group_size": 128, "w_bit": 4, "version": "GEMM"}
 

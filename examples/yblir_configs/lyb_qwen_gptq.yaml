@@ -1,0 +1,12 @@
+model_name_or_path: /mnt/e/PyCharm/PreTrainModel/qwen_7b_chat_lora_merge
+template: qwen
+
+# export
+export_dir: /mnt/e/PyCharm/PreTrainModel/qwen_7b_chat_lora_merge_gptq_4_test
+export_quantization_bit: 4
+#export_quantization_dataset: /mnt/e/PyCharm/insteresting/LLaMA-Factory-0.7.1/data/qwen-7b-sql-gptq.json
+export_quantization_dataset: /mnt/e/PyCharm/insteresting/LLaMA-Factory-0.7.1/data/c4_demo.json
+export_size: 2
+export_device: cpu
+# 为true,保存为safetensors格式
+export_legacy_format: true
