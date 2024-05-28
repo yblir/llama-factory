@@ -10,7 +10,7 @@ from awq import AutoAWQForCausalLM
 from transformers import AutoTokenizer
 
 
-def preprocess(data_path_):
+def qwen_preprocess(data_path_):
     '''
     最终处理后，msg格式如下：
     [
@@ -39,14 +39,16 @@ if __name__ == '__main__':
     # with open(data_path, 'r', encoding='utf-8') as f:
     #     messages = json.load(f)
 
+    # GEMM:文本长或batch_size比较大时，速度会快，少文本时，GEMV会更快
     quant_config = {"zero_point": True, "q_group_size": 128, "w_bit": 4, "version": "GEMM"}
 
     # Load your tokenizer and model with AutoAWQ
     tokenizer = AutoTokenizer.from_pretrained(model_path)
     model = AutoAWQForCausalLM.from_pretrained(model_path, device_map="auto", safetensors=True)
 
-    data = preprocess(data_path)
+    data = qwen_preprocess(data_path)
 
+    # 默认数据长度大于512，该条数据不使用
     model.quantize(tokenizer, quant_config=quant_config, calib_data=data)
 
     model.save_quantized(quant_path, safetensors=True)

@@ -11,7 +11,7 @@ from auto_gptq import AutoGPTQForCausalLM, BaseQuantizeConfig
 from transformers import AutoTokenizer
 
 
-def preprocess(data_path_):
+def qwen_preprocess(data_path_):
     """
     最终处理后，msg格式如下，system要改成自己的：
     [
@@ -48,6 +48,8 @@ if __name__ == '__main__':
     quant_path = "/mnt/e/PyCharm/PreTrainModel/qwen_7b_chat_lora_merge_gptq_4_test2"
     quantize_dataset_path = '/mnt/e/PyCharm/insteresting/LLaMA-Factory-0.7.1/data/qwen-7b-sql-gptq.json'
 
+    # 最大输入token数量，超出截断
+    max_len = 8192
     quantize_config = BaseQuantizeConfig(
             bits=4,  # 4 or 8
             group_size=128,
@@ -59,21 +61,20 @@ if __name__ == '__main__':
             model_name_or_path=None,
             model_file_base_name="model"
     )
-    max_len = 8192
 
     tokenizer = AutoTokenizer.from_pretrained(model_path)
     model = AutoGPTQForCausalLM.from_pretrained(
             model_path,
             quantize_config,
             device_map="auto",
-            # 用多GPU来读取模型, 与device_map二选一
-            # max_memory={i:"20GB" for i in range(4)},
+            # max_memory={i:"20GB" for i in range(4)}, # 用多GPU来读取模型, 与device_map二选一
             trust_remote_code=True
     )
 
-    data = preprocess(quantize_dataset_path)
+    data = qwen_preprocess(quantize_dataset_path)
 
-    model.quantize(data, cache_examples_on_gpu=False)
+    # cache_examples_on_gpu:中间量化缓存是否保存在gpu上,如果显存小,设为false. use_triton:使用triton加速包
+    model.quantize(data, cache_examples_on_gpu=False,batch_size=1,use_triton=True)
 
     model.save_quantized(quant_path, use_safetensors=True)
     tokenizer.save_pretrained(quant_path)
