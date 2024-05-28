@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2024/5/17 23:21
 # @Author  : yblir
-# @File    : lyb_export_model.py
+# @File    : lyb_merge_model.py
 # explain  :
 # =======================================================
 import yaml
