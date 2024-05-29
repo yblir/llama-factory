@@ -34,7 +34,7 @@ def qwen_preprocess(lora_data_, tokenizer_, max_len_):
     for msg in messages:
         text = tokenizer_.apply_chat_template(msg, tokenize=False, add_generation_prompt=False)
         model_inputs = tokenizer_([text])
-        input_ids = torch.tensor(model_inputs.input_ids[:max_len], dtype=torch.int)
+        input_ids = torch.tensor(model_inputs.input_ids[:max_len_], dtype=torch.int)
         data.append(dict(input_ids=input_ids, attention_mask=input_ids.ne(tokenizer_.pad_token_id)))
 
     return data
