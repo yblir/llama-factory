@@ -1,6 +1,6 @@
 # model
 #model_name_or_path: E:\PyCharm\PreTrainModel\qwen_7b_chat
-model_name_or_path: /mnt/e/PyCharm/PreTrainModel/qwen_7b_chat
+model_name_or_path: /media/xk/D6B8A862B8A8433B/data/qwen1_5-1_8b
 # method
 stage: sft
 do_train: true
@@ -8,32 +8,32 @@ finetuning_type: lora
 lora_target: all
 
 # dataset
-dataset: new_train_datas4
+dataset: train_clean
 dataset_dir: ../data
 template: qwen
 cutoff_len: 1024
 #max_samples: 1000
 overwrite_cache: true
-preprocessing_num_workers: 4
+preprocessing_num_workers: 2
 
 # output
-output_dir: saves/qwen_7b_chat_sft
+output_dir: /media/xk/D6B8A862B8A8433B/data/save_lora/qwen1_5-1_8b_lora
 logging_steps: 10
 save_steps: 100
 plot_loss: true
 overwrite_output_dir: true
 
 # train
-per_device_train_batch_size: 4
+per_device_train_batch_size: 2
 gradient_accumulation_steps: 2
 learning_rate: 0.00001
-num_train_epochs: 3.0
+num_train_epochs: 2.0
 lr_scheduler_type: cosine
 warmup_steps: 0.1
 fp16: true
 
 # eval
 val_size: 0.1
-per_device_eval_batch_size: 4
+per_device_eval_batch_size: 2
 evaluation_strategy: steps
-eval_steps: 200
+eval_steps: 100

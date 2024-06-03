@@ -1,0 +1,7 @@
+[
+    {
+        "instruction": "<question>:查询所有考试信息. CREATE TABLE 考试信息表 (日期 FLOAT,考试时间 VARCHAR(255),学院 VARCHAR(255),课程 VARCHAR(255),考试班级 FLOAT,班级人数 FLOAT,考试地点 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 考试信息表"
+    }
+]
