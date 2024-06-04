@@ -2,12 +2,12 @@
 #model_name_or_path: /mnt/e/PyCharm/PreTrainModel/qwen_7b_awq_int4_GEMM
 #model_name_or_path: /mnt/e/PyCharm/PreTrainModel/qwen_7b_awq_int4_GEMV
 #model_name_or_path: /mnt/e/PyCharm/PreTrainModel/qwen_7b_chat_gptq_int8
-model_name_or_path: /mnt/e/PyCharm/PreTrainModel/qwen_7b_chat_gptq_int4
+model_name_or_path: /media/xk/D6B8A862B8A8433B/data/qwen1_5-1_8b
 
 
 template: qwen
 
 #quantization_bit: 8
 
-infer_backend: vllm
-vllm_enforce_eager: true
+#infer_backend: vllm
+#vllm_enforce_eager: true

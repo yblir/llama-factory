@@ -1,6 +1,6 @@
 {
   "train_clean": {
-    "file_name": "train_clean_test.json",
+    "file_name": "train_clean.json",
     "columns": {
       "prompt": "instruction",
       "query": "input",

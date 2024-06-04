@@ -6,6 +6,8 @@
 # =======================================================
 import logging
 import json
+import sys
+
 import torch
 from auto_gptq import AutoGPTQForCausalLM, BaseQuantizeConfig
 from transformers import AutoTokenizer
@@ -35,15 +37,19 @@ def qwen_preprocess(lora_data_, tokenizer_, max_len_):
         text = tokenizer_.apply_chat_template(msg, tokenize=False, add_generation_prompt=False)
         model_inputs = tokenizer_([text])
         input_ids = torch.tensor(model_inputs.input_ids[:max_len_], dtype=torch.int)
+        # print(input_ids)
+        # sys.exit()
         data.append(dict(input_ids=input_ids, attention_mask=input_ids.ne(tokenizer_.pad_token_id)))
 
     return data
 
 
 if __name__ == '__main__':
-    model_dir_path = "/mnt/e/PyCharm/PreTrainModel/qwen_7b_chat_lora_merge"
-    quantized_path = "/mnt/e/PyCharm/PreTrainModel/qwen_7b_chat_lora_merge_gptq_4_test2"
-    quantize_dataset_path = '/mnt/e/PyCharm/insteresting/LLaMA-Factory-0.7.1/data/qwen-7b-sql-gptq.json'
+    model_dir_path = "/media/xk/D6B8A862B8A8433B/data/qwen1_5-1_8b_merge_800"
+    quantized_path = "/media/xk/D6B8A862B8A8433B/data/qwen1_5-1_8b_merge_800_int4_gptq"
+    # 验证prompt的单条数据
+    # quantize_dataset_path = '/media/xk/D6B8A862B8A8433B/GitHub/llama-factory/data/train_clean_test.json'
+    quantize_dataset_path = '/media/xk/D6B8A862B8A8433B/GitHub/llama-factory/data/train_clean.json'
 
     # 加载校准集
     with open(quantize_dataset_path, 'r', encoding='utf-8') as f:

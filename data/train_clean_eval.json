@@ -1,0 +1,1322 @@
+[
+  {
+        "instruction": "<question>:按照同比升序排序，输出城市名、同比、近7日日均成交环比，其中同比大于1，近7日日均成交环比小于1\nCREATE TABLE 城市成交情况 (城市名 VARCHAR(255),\n日成交 FLOAT,\n前一日成交 FLOAT,\n环比 FLOAT,\n近7日日均成交 FLOAT,\n近7日日均成交环比 FLOAT,\n去年同期28日均成交 FLOAT,\n同比 FLOAT);",
+        "input": "",
+        "output": "SELECT 城市名, 同比, 近7日日均成交_环比 FROM 城市成交情况 WHERE 同比 > 1 AND 近7日日均成交_环比 < 1 ORDER BY 同比 ASC"
+    },
+    {
+        "instruction": "<question>:输出城市日成交量大于1000的城市名及其日成交量\nCREATE TABLE 城市成交情况 (城市名 VARCHAR(255),\n日成交 FLOAT,\n前一日成交 FLOAT,\n环比 FLOAT,\n近7日日均成交 FLOAT,\n近7日日均成交环比 FLOAT,\n去年同期28日均成交 FLOAT,\n同比 FLOAT);",
+        "input": "",
+        "output": "SELECT 城市名, 日成交 FROM 城市成交情况 WHERE 日成交 > 1000"
+    },
+    {
+        "instruction": "<question>:输出城市日成交量排名前10的城市名和日成交量\nCREATE TABLE 城市成交情况 (城市名 VARCHAR(255),\n日成交 FLOAT,\n前一日成交 FLOAT,\n环比 FLOAT,\n近7日日均成交 FLOAT,\n近7日日均成交环比 FLOAT,\n去年同期28日均成交 FLOAT,\n同比 FLOAT);",
+        "input": "",
+        "output": "SELECT 城市名, 日成交 FROM 城市成交情况 ORDER BY 日成交 DESC LIMIT 10"
+    },
+    {
+        "instruction": "<question>:输出环比最大的城市名和其环比值\nCREATE TABLE 城市成交情况 (城市名 VARCHAR(255),\n日成交 FLOAT,\n前一日成交 FLOAT,\n环比 FLOAT,\n近7日日均成交 FLOAT,\n近7日日均成交环比 FLOAT,\n去年同期28日均成交 FLOAT,\n同比 FLOAT);",
+        "input": "",
+        "output": "SELECT 城市名, 环比 FROM 城市成交情况 ORDER BY 环比 DESC LIMIT 1"
+    },
+    {
+        "instruction": "<question>:输出所有城市日成交量的平均值、最大值和最小值\nCREATE TABLE 城市成交情况 (城市名 VARCHAR(255),\n日成交 FLOAT,\n前一日成交 FLOAT,\n环比 FLOAT,\n近7日日均成交 FLOAT,\n近7日日均成交环比 FLOAT,\n去年同期28日均成交 FLOAT,\n同比 FLOAT);",
+        "input": "",
+        "output": "SELECT AVG(日成交), MAX(日成交), MIN(日成交) FROM 城市成交情况"
+    },
+    {
+        "instruction": "<question>:输出近7日日均成交量大于1000的城市个数\nCREATE TABLE 城市成交情况 (城市名 VARCHAR(255),\n日成交 FLOAT,\n前一日成交 FLOAT,\n环比 FLOAT,\n近7日日均成交 FLOAT,\n近7日日均成交环比 FLOAT,\n去年同期28日均成交 FLOAT,\n同比 FLOAT);",
+        "input": "",
+        "output": "SELECT COUNT(*) FROM 城市成交情况 WHERE 近7日日均成交 > 1000"
+    },
+    {
+        "instruction": "<question>:输出城市名中包含“京”的城市日成交量总和\nCREATE TABLE 城市成交情况 (城市名 VARCHAR(255),\n日成交 FLOAT,\n前一日成交 FLOAT,\n环比 FLOAT,\n近7日日均成交 FLOAT,\n近7日日均成交环比 FLOAT,\n去年同期28日均成交 FLOAT,\n同比 FLOAT);",
+        "input": "",
+        "output": "SELECT SUM(日成交) FROM 城市成交情况 WHERE 城市名 LIKE '%京%'"
+    },
+    {
+        "instruction": "<question>:输出环比大于1且同比小于1的城市数量\nCREATE TABLE 城市成交情况 (城市名 VARCHAR(255),\n日成交 FLOAT,\n前一日成交 FLOAT,\n环比 FLOAT,\n近7日日均成交 FLOAT,\n近7日日均成交环比 FLOAT,\n去年同期28日均成交 FLOAT,\n同比 FLOAT);",
+        "input": "",
+        "output": "SELECT COUNT(*) FROM 城市成交情况 WHERE 环比 > 1 AND 同比 < 1"
+    },
+    {
+        "instruction": "<question>:查询出被抽查产品名称为“口红”的所有数据，并按照序号升序排序\nCREATE TABLE 抽查结果 (序号 FLOAT,\n被抽查单位 VARCHAR(255),\n被抽查产品名称 VARCHAR(255),\n商标 VARCHAR(255),\n型号规格 VARCHAR(255),\n生产日期或批号 VARCHAR(255),\n抽查时间 FLOAT,\n抽查结果 VARCHAR(255),\n承检单位 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT DISTINCT 序号, 被抽查单位, 被抽查产品名称, 商标, 型号规格, 生产日期或批号, 抽查时间, 抽查结果, 承检单位 FROM 抽查结果 WHERE 被抽查产品名称 LIKE '%口红%' ORDER BY 序号 ASC"
+    },
+    {
+        "instruction": "<question>:查询出抽查结果为“不合格”的所有数据，并按抽查时间降序排序\nCREATE TABLE 抽查结果 (序号 FLOAT,\n被抽查单位 VARCHAR(255),\n被抽查产品名称 VARCHAR(255),\n商标 VARCHAR(255),\n型号规格 VARCHAR(255),\n生产日期或批号 VARCHAR(255),\n抽查时间 FLOAT,\n抽查结果 VARCHAR(255),\n承检单位 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT DISTINCT 序号, 被抽查单位, 被抽查产品名称, 商标, 型号规格, 生产日期或批号, 抽查时间, 抽查结果, 承检单位 FROM 抽查结果 WHERE 抽查结果 = '不合格' ORDER BY 抽查时间 DESC"
+    },
+    {
+        "instruction": "<question>:查询出所有被抽查单位为“XX集团”的产品名称和商标\nCREATE TABLE 抽查结果 (序号 FLOAT,\n被抽查单位 VARCHAR(255),\n被抽查产品名称 VARCHAR(255),\n商标 VARCHAR(255),\n型号规格 VARCHAR(255),\n生产日期或批号 VARCHAR(255),\n抽查时间 FLOAT,\n抽查结果 VARCHAR(255),\n承检单位 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT DISTINCT 被抽查产品名称, 商标 FROM 抽查结果 WHERE 被抽查单位 = 'XX集团'"
+    },
+    {
+        "instruction": "<question>:查询出被抽查单位不同的所有数据，并按照被抽查单位分组\nCREATE TABLE 抽查结果 (序号 FLOAT,\n被抽查单位 VARCHAR(255),\n被抽查产品名称 VARCHAR(255),\n商标 VARCHAR(255),\n型号规格 VARCHAR(255),\n生产日期或批号 VARCHAR(255),\n抽查时间 FLOAT,\n抽查结果 VARCHAR(255),\n承检单位 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(被抽查单位), 被抽查单位 FROM 抽查结果 GROUP BY 被抽查单位"
+    },
+    {
+        "instruction": "<question>:检索出播放量最高的前10部电视剧。\nCREATE TABLE 电视剧播放排名 (名次 FLOAT,\n剧名 VARCHAR(255),\n网络播放量 VARCHAR(255),\n出品公司 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 电视剧播放排名 ORDER BY 网络播放量 DESC LIMIT 10;"
+    },
+    {
+        "instruction": "<question>:筛选出出品公司是“东阳盛泰文化传媒有限公司”并按照播放量从高到低排序。\nCREATE TABLE 电视剧播放排名 (名次 FLOAT,\n剧名 VARCHAR(255),\n网络播放量 VARCHAR(255),\n出品公司 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 电视剧播放排名 WHERE 出品公司='东阳盛泰文化传媒有限公司' ORDER BY 网络播放量 DESC;"
+    },
+    {
+        "instruction": "<question>:按照出品公司统计每个公司的电视剧数量，并按照数量从高到低排序。\nCREATE TABLE 电视剧播放排名 (名次 FLOAT,\n剧名 VARCHAR(255),\n网络播放量 VARCHAR(255),\n出品公司 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 出品公司, COUNT(*) AS 电视剧数量 FROM 电视剧播放排名 GROUP BY 出品公司 ORDER BY 电视剧数量 DESC;"
+    },
+    {
+        "instruction": "<question>:查询网站名称包含'科技'的网站数量。\nCREATE TABLE 网站信息 (序号 FLOAT,\n网站标识码 FLOAT,\n网站名称 VARCHAR(255),\n门户 VARCHAR(255),\n首页网址 VARCHAR(255),\n结果 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(DISTINCT 网站名称) FROM 网站信息 WHERE 网站名称 LIKE '%科技%';"
+    },
+    {
+        "instruction": "<question>:查询所有门户中网站数量大于3的门户名称和网站数量。\nCREATE TABLE 网站信息 (序号 FLOAT,\n网站标识码 FLOAT,\n网站名称 VARCHAR(255),\n门户 VARCHAR(255),\n首页网址 VARCHAR(255),\n结果 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 门户, COUNT(DISTINCT 网站标识码) FROM 网站信息 GROUP BY 门户 HAVING COUNT(DISTINCT 网站标识码) > 3;"
+    },
+    {
+        "instruction": "<question>:查询网站标识码为10001的首页网址和结果。\nCREATE TABLE 网站信息 (序号 FLOAT,\n网站标识码 FLOAT,\n网站名称 VARCHAR(255),\n门户 VARCHAR(255),\n首页网址 VARCHAR(255),\n结果 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 首页网址, 结果 FROM 网站信息 WHERE 网站标识码 = 10001;"
+    },
+    {
+        "instruction": "<question>:查询每个门户中网站数量大于等于5的网站数量和门户名称。\nCREATE TABLE 网站信息 (序号 FLOAT,\n网站标识码 FLOAT,\n网站名称 VARCHAR(255),\n门户 VARCHAR(255),\n首页网址 VARCHAR(255),\n结果 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 门户, COUNT(DISTINCT 网站标识码) FROM 网站信息 GROUP BY 门户 HAVING COUNT(DISTINCT 网站标识码) >= 5;"
+    },
+    {
+        "instruction": "<question>:查询前5个网站标识码和网站名称。\nCREATE TABLE 网站信息 (序号 FLOAT,\n网站标识码 FLOAT,\n网站名称 VARCHAR(255),\n门户 VARCHAR(255),\n首页网址 VARCHAR(255),\n结果 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 网站标识码, 网站名称 FROM 网站信息 LIMIT 5;"
+    },
+    {
+        "instruction": "<question>:请列出单位为'个'的名称和数量\nCREATE TABLE 无名表 (序号 FLOAT,\n名称 VARCHAR(255),\n规格 VARCHAR(255),\n单位 VARCHAR(255),\n数量 FLOAT,\n技术要求 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT distinct 名称, 数量 FROM 无名表 WHERE 单位 = '个'"
+    },
+    {
+        "instruction": "<question>:请列出数量大于10且技术要求中包含'高强度'的名称和规格\nCREATE TABLE 无名表 (序号 FLOAT,\n名称 VARCHAR(255),\n规格 VARCHAR(255),\n单位 VARCHAR(255),\n数量 FLOAT,\n技术要求 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 名称, 规格 FROM 无名表 WHERE 技术要求 like '%高强度%' and 数量 > 10"
+    },
+    {
+        "instruction": "<question>:请列出数量最多的前3个名称和对应的数量\nCREATE TABLE 无名表 (序号 FLOAT,\n名称 VARCHAR(255),\n规格 VARCHAR(255),\n单位 VARCHAR(255),\n数量 FLOAT,\n技术要求 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 名称, sum(数量) as 数量 FROM 无名表 GROUP BY 名称 ORDER BY 数量 DESC LIMIT 3"
+    },
+    {
+        "instruction": "<question>:请列出名称中包含'钢'或'铁'的规格和对应数量的总和\nCREATE TABLE 无名表 (序号 FLOAT,\n名称 VARCHAR(255),\n规格 VARCHAR(255),\n单位 VARCHAR(255),\n数量 FLOAT,\n技术要求 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 规格, sum(数量) as 数量 FROM 无名表 WHERE 名称 like '%钢%' or 名称 like '%铁%' GROUP BY 规格"
+    },
+    {
+        "instruction": "<question>:请列出数量大于5的所有名称并按照名称字母顺序排序\nCREATE TABLE 无名表 (序号 FLOAT,\n名称 VARCHAR(255),\n规格 VARCHAR(255),\n单位 VARCHAR(255),\n数量 FLOAT,\n技术要求 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 名称 FROM 无名表 WHERE 数量 > 5 ORDER BY 名称"
+    },
+    {
+        "instruction": "<question>:查询所有招聘单位的名称\nCREATE TABLE 招聘信息表 (岗位序号 FLOAT,\n招聘单位 VARCHAR(255),\n招聘岗位 VARCHAR(255),\n招聘人数 FLOAT,\n专业 VARCHAR(255),\n学历 VARCHAR(255),\n学位 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT DISTINCT 招聘单位 FROM 招聘信息表"
+    },
+    {
+        "instruction": "<question>:查询专业为'计算机科学'的岗位数量\nCREATE TABLE 招聘信息表 (岗位序号 FLOAT,\n招聘单位 VARCHAR(255),\n招聘岗位 VARCHAR(255),\n招聘人数 FLOAT,\n专业 VARCHAR(255),\n学历 VARCHAR(255),\n学位 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(*) FROM 招聘信息表 WHERE 专业='计算机科学'"
+    },
+    {
+        "instruction": "<question>:查询专业为'电子工程'并且学历要求为'本科'的招聘单位名称和招聘岗位\nCREATE TABLE 招聘信息表 (岗位序号 FLOAT,\n招聘单位 VARCHAR(255),\n招聘岗位 VARCHAR(255),\n招聘人数 FLOAT,\n专业 VARCHAR(255),\n学历 VARCHAR(255),\n学位 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 招聘单位, 招聘岗位 FROM 招聘信息表 WHERE 专业='电子工程' AND 学历='本科'"
+    },
+    {
+        "instruction": "<question>:查询每个招聘单位总共招聘的人数，结果按照招聘人数倒序排序\nCREATE TABLE 招聘信息表 (岗位序号 FLOAT,\n招聘单位 VARCHAR(255),\n招聘岗位 VARCHAR(255),\n招聘人数 FLOAT,\n专业 VARCHAR(255),\n学历 VARCHAR(255),\n学位 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 招聘单位, SUM(招聘人数) AS total FROM 招聘信息表 GROUP BY 招聘单位 ORDER BY total DESC"
+    },
+    {
+        "instruction": "<question>:查询招聘岗位名称中包含'工程师'的招聘信息，结果只显示前10条\nCREATE TABLE 招聘信息表 (岗位序号 FLOAT,\n招聘单位 VARCHAR(255),\n招聘岗位 VARCHAR(255),\n招聘人数 FLOAT,\n专业 VARCHAR(255),\n学历 VARCHAR(255),\n学位 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 招聘信息表 WHERE 招聘岗位 LIKE '%工程师%' LIMIT 10"
+    },
+    {
+        "instruction": "<question>:查询出版社为'人民文学出版社'的书籍数量\nCREATE TABLE 图书列表 (编号 FLOAT,\n索书号 VARCHAR(255),\n书名 VARCHAR(255),\n出版社 VARCHAR(255),\n条码 FLOAT);",
+        "input": "",
+        "output": "SELECT COUNT(*) FROM 图书列表 WHERE 出版社 = '人民文学出版社'"
+    },
+    {
+        "instruction": "<question>:按照出版社分组，查询每个出版社的平均条码长度\nCREATE TABLE 图书列表 (编号 FLOAT,\n索书号 VARCHAR(255),\n书名 VARCHAR(255),\n出版社 VARCHAR(255),\n条码 FLOAT);",
+        "input": "",
+        "output": "SELECT 出版社, AVG(条码) FROM 图书列表 GROUP BY 出版社"
+    },
+    {
+        "instruction": "<question>:统计不同出版社的书籍数量，按照数量降序排序\nCREATE TABLE 图书列表 (编号 FLOAT,\n索书号 VARCHAR(255),\n书名 VARCHAR(255),\n出版社 VARCHAR(255),\n条码 FLOAT);",
+        "input": "",
+        "output": "SELECT 出版社, COUNT(*) FROM 图书列表 GROUP BY 出版社 ORDER BY COUNT(*) DESC"
+    },
+    {
+        "instruction": "<question>:请输出所有项目地址在某个城市（比如上海）的项目名称和项目建设单位\nCREATE TABLE 表名 (市州名称 VARCHAR(255),\n县(市、区)名称 VARCHAR(255),\n项目建设单位 VARCHAR(255),\n项目名称 VARCHAR(255),\n项目地址 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 项目名称, 项目建设单位 FROM 表名 WHERE 市州名称='上海'"
+    },
+    {
+        "instruction": "<question>:请输出所有市州名称以及它们对应的项目数量\nCREATE TABLE 表名 (市州名称 VARCHAR(255),\n县(市、区)名称 VARCHAR(255),\n项目建设单位 VARCHAR(255),\n项目名称 VARCHAR(255),\n项目地址 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 市州名称, COUNT(*) AS 项目数量 FROM 表名 GROUP BY 市州名称"
+    },
+    {
+        "instruction": "<question>:按照省份统计企业数量，并按照数量从高到低排序\nCREATE TABLE 企业信息表 (序号 FLOAT,\n省份 VARCHAR(255),\n企业名称 VARCHAR(255),\n生产类型 VARCHAR(255),\n注册资本 FLOAT,\n注册地址 VARCHAR(255),\n生产地址 VARCHAR(255),\n批准文号 VARCHAR(255),\n有效期 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 省份, count(企业名称) as 企业数量 FROM 企业信息表 group by 省份 ORDER BY 企业数量 DESC"
+    },
+    {
+        "instruction": "<question>:在生产类型中筛选出所有包含'医药'的企业\nCREATE TABLE 企业信息表 (序号 FLOAT,\n省份 VARCHAR(255),\n企业名称 VARCHAR(255),\n生产类型 VARCHAR(255),\n注册资本 FLOAT,\n注册地址 VARCHAR(255),\n生产地址 VARCHAR(255),\n批准文号 VARCHAR(255),\n有效期 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 企业信息表 WHERE 生产类型 LIKE '%医药%'"
+    },
+    {
+        "instruction": "<question>:输出所有数据表中的数据\nCREATE TABLE 样例表 (序号 FLOAT,\n项目 VARCHAR(255),\n时长 VARCHAR(255),\n负责单位 VARCHAR(255),\n主要内容 VARCHAR(255),\n要求 VARCHAR(255),\n备注1 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 样例表"
+    },
+    {
+        "instruction": "<question>:按照时长倒序输出所有数据\nCREATE TABLE 样例表 (序号 FLOAT,\n项目 VARCHAR(255),\n时长 VARCHAR(255),\n负责单位 VARCHAR(255),\n主要内容 VARCHAR(255),\n要求 VARCHAR(255),\n备注1 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 样例表 ORDER BY 时长 DESC"
+    },
+    {
+        "instruction": "<question>:按照负责单位分类，并统计各负责单位负责的项目数\nCREATE TABLE 样例表 (序号 FLOAT,\n项目 VARCHAR(255),\n时长 VARCHAR(255),\n负责单位 VARCHAR(255),\n主要内容 VARCHAR(255),\n要求 VARCHAR(255),\n备注1 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 负责单位, COUNT(*) AS 项目_count FROM 样例表 GROUP BY 负责单位"
+    },
+    {
+        "instruction": "<question>:找到负责单位为A的项目\nCREATE TABLE 样例表 (序号 FLOAT,\n项目 VARCHAR(255),\n时长 VARCHAR(255),\n负责单位 VARCHAR(255),\n主要内容 VARCHAR(255),\n要求 VARCHAR(255),\n备注1 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 样例表 WHERE 负责单位 = 'A'"
+    },
+    {
+        "instruction": "<question>:找出其中主要内容包含'机器学习'的所有项目\nCREATE TABLE 样例表 (序号 FLOAT,\n项目 VARCHAR(255),\n时长 VARCHAR(255),\n负责单位 VARCHAR(255),\n主要内容 VARCHAR(255),\n要求 VARCHAR(255),\n备注1 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 样例表 WHERE 主要内容 LIKE '%机器学习%'"
+    },
+    {
+        "instruction": "<question>:输出项目资金超过100万的项目名称和实施单位\nCREATE TABLE 数据表 (实施单位 VARCHAR(255),\n序号 FLOAT,\n项目名称 VARCHAR(255),\n项目资金 FLOAT,\n项目资金来源 VARCHAR(255),\n合计 FLOAT);",
+        "input": "",
+        "output": "SELECT 实施单位, 项目名称 FROM 数据表 WHERE 项目资金 > 1000000;"
+    },
+    {
+        "instruction": "<question>:输出项目名称以“教育”开头的项目资金和资金来源\nCREATE TABLE 数据表 (实施单位 VARCHAR(255),\n序号 FLOAT,\n项目名称 VARCHAR(255),\n项目资金 FLOAT,\n项目资金来源 VARCHAR(255),\n合计 FLOAT);",
+        "input": "",
+        "output": "SELECT 项目名称, 项目资金, 项目资金来源 FROM 数据表 WHERE 项目名称 LIKE '教育%';"
+    },
+    {
+        "instruction": "<question>:统计每个实施单位的项目数量，并按照数量从多到少排序\nCREATE TABLE 数据表 (实施单位 VARCHAR(255),\n序号 FLOAT,\n项目名称 VARCHAR(255),\n项目资金 FLOAT,\n项目资金来源 VARCHAR(255),\n合计 FLOAT);",
+        "input": "",
+        "output": "SELECT 实施单位, COUNT(*) AS 项目数量 FROM 数据表 GROUP BY 实施单位 ORDER BY 项目数量 DESC;"
+    },
+    {
+        "instruction": "<question>:输出项目资金来源为“国家资金”的项目数量和总资金\nCREATE TABLE 数据表 (实施单位 VARCHAR(255),\n序号 FLOAT,\n项目名称 VARCHAR(255),\n项目资金 FLOAT,\n项目资金来源 VARCHAR(255),\n合计 FLOAT);",
+        "input": "",
+        "output": "SELECT COUNT(*) AS 项目数量, SUM(项目资金) AS 总资金 FROM 数据表 WHERE 项目资金来源 = '国家资金';"
+    },
+    {
+        "instruction": "<question>:输出每个实施单位的项目总资金以及平均资金\nCREATE TABLE 数据表 (实施单位 VARCHAR(255),\n序号 FLOAT,\n项目名称 VARCHAR(255),\n项目资金 FLOAT,\n项目资金来源 VARCHAR(255),\n合计 FLOAT);",
+        "input": "",
+        "output": "SELECT 实施单位, SUM(项目资金) AS 总资金, AVG(项目资金) AS 平均资金 FROM 数据表 GROUP BY 实施单位;"
+    },
+    {
+        "instruction": "<question>:请输出所有辅导机构为'A机构'的公司名称和注册地址\nCREATE TABLE 公司信息 (序号 FLOAT,\n公司名称 VARCHAR(255),\n注册地址 VARCHAR(255),\n辅导机构 VARCHAR(255),\n拟上板块 VARCHAR(255),\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 公司名称, 注册地址 FROM 公司信息 WHERE 辅导机构 = 'A机构';"
+    },
+    {
+        "instruction": "<question>:请输出所有拟上板块为'创业板'的公司数量\nCREATE TABLE 公司信息 (序号 FLOAT,\n公司名称 VARCHAR(255),\n注册地址 VARCHAR(255),\n辅导机构 VARCHAR(255),\n拟上板块 VARCHAR(255),\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(*) FROM 公司信息 WHERE 拟上板块 = '创业板';"
+    },
+    {
+        "instruction": "<question>:请输出所有拟上板块为'创业板'且辅导机构不为空的公司数量\nCREATE TABLE 公司信息 (序号 FLOAT,\n公司名称 VARCHAR(255),\n注册地址 VARCHAR(255),\n辅导机构 VARCHAR(255),\n拟上板块 VARCHAR(255),\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(*) FROM 公司信息 WHERE 拟上板块 = '创业板' AND 辅导机构 IS NOT NULL;"
+    },
+    {
+        "instruction": "<question>:请按照公司名称升序输出前10条数据\nCREATE TABLE 公司信息 (序号 FLOAT,\n公司名称 VARCHAR(255),\n注册地址 VARCHAR(255),\n辅导机构 VARCHAR(255),\n拟上板块 VARCHAR(255),\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 公司信息 ORDER BY 公司名称 ASC LIMIT 公司名称序号;"
+    },
+    {
+        "instruction": "<question>:1. 按照上交率降序显示表格结果。\nCREATE TABLE 学生成绩表 (序号 FLOAT,\n班级 VARCHAR(255),\n上交份数 FLOAT,\n班级总人数 FLOAT,\n上交率 FLOAT);",
+        "input": "",
+        "output": "SELECT * FROM 学生成绩表 ORDER BY 上交率 DESC;"
+    },
+    {
+        "instruction": "<question>:2. 统计每个班级上交率的平均值和中位数。\nCREATE TABLE 学生成绩表 (序号 FLOAT,\n班级 VARCHAR(255),\n上交份数 FLOAT,\n班级总人数 FLOAT,\n上交率 FLOAT);",
+        "input": "",
+        "output": "SELECT 班级, AVG(上交率) AS 平均值, PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY 上交率) AS 中位数 FROM 学生成绩表 GROUP BY 班级;"
+    },
+    {
+        "instruction": "<question>:4. 找出上交率在90%及以上的班级。\nCREATE TABLE 学生成绩表 (序号 FLOAT,\n班级 VARCHAR(255),\n上交份数 FLOAT,\n班级总人数 FLOAT,\n上交率 FLOAT);",
+        "input": "",
+        "output": "SELECT * FROM 学生成绩表 WHERE 上交率 >= 0.9;"
+    },
+    {
+        "instruction": "<question>:2. 统计所有许可证有效期小于等于2022年的企业数量。\nCREATE TABLE 燃气供应企业许可证信息表 (序号 FLOAT,\n企业名称 VARCHAR(255),\n许可证号 VARCHAR(255),\n经营类别 VARCHAR(255),\n许可证有效期 VARCHAR(255),\n发证区 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT count(DISTINCT 企业名称) FROM 燃气供应企业许可证信息表 WHERE 许可证有效期 <= '2022-01-01';"
+    },
+    {
+        "instruction": "<question>:3. 统计每个发证区的企业数量，并按数量从多到少排序。\nCREATE TABLE 燃气供应企业许可证信息表 (序号 FLOAT,\n企业名称 VARCHAR(255),\n许可证号 VARCHAR(255),\n经营类别 VARCHAR(255),\n许可证有效期 VARCHAR(255),\n发证区 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 发证区, count(DISTINCT 企业名称) AS 企业数量 FROM 燃气供应企业许可证信息表 GROUP BY 发证区 ORDER BY 企业数量 DESC;"
+    },
+    {
+        "instruction": "<question>:4. 搜索企业名称包含“天然气”的企业数量。\nCREATE TABLE 燃气供应企业许可证信息表 (序号 FLOAT,\n企业名称 VARCHAR(255),\n许可证号 VARCHAR(255),\n经营类别 VARCHAR(255),\n许可证有效期 VARCHAR(255),\n发证区 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT count(DISTINCT 企业名称) FROM 燃气供应企业许可证信息表 WHERE 企业名称 LIKE '%天然气%';"
+    },
+    {
+        "instruction": "<question>:查询企业名称中包含“科技”的企业有哪些，并按照参保人数降序排序，最多显示10条记录\nCREATE TABLE 企业社保核定情况表 (序号 FLOAT,\n企业名称 VARCHAR(255),\n企业性质 VARCHAR(255),\n参保人数 FLOAT,\n当年核定 FLOAT,\n当年缴费 FLOAT,\n当年欠费 FLOAT,\n累计欠费 FLOAT,\n减少人数 FLOAT,\n裁员人数 FLOAT,\n裁员率 VARCHAR(255),\n补贴比例 FLOAT,\n申报金额 FLOAT);",
+        "input": "",
+        "output": "SELECT DISTINCT 企业名称, 参保人数 FROM 企业社保核定情况表 WHERE 企业名称 LIKE '%科技%' ORDER BY 参保人数 DESC LIMIT 10;"
+    },
+    {
+        "instruction": "<question>:查询当年缴费金额大于当年核定金额的企业有哪些，按照补贴比例从高到低排序，只显示前20条记录\nCREATE TABLE 企业社保核定情况表 (序号 FLOAT,\n企业名称 VARCHAR(255),\n企业性质 VARCHAR(255),\n参保人数 FLOAT,\n当年核定 FLOAT,\n当年缴费 FLOAT,\n当年欠费 FLOAT,\n累计欠费 FLOAT,\n减少人数 FLOAT,\n裁员人数 FLOAT,\n裁员率 VARCHAR(255),\n补贴比例 FLOAT,\n申报金额 FLOAT);",
+        "input": "",
+        "output": "SELECT 企业名称, 当年缴费, 当年核定, 补贴比例 FROM 企业社保核定情况表 WHERE 当年缴费 > 当年核定 ORDER BY 补贴比例 DESC LIMIT 20;"
+    },
+    {
+        "instruction": "<question>:查询表中商标含有“百事可乐”的数据\nCREATE TABLE 产品质量抽查表 (序号 FLOAT,\n企业名称 VARCHAR(255),\n所在省 VARCHAR(255),\n商标 VARCHAR(255),\n规格型号 VARCHAR(255),\n生产日期/批号 VARCHAR(255),\n抽查结果 VARCHAR(255),\n承检机构 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 产品质量抽查表 WHERE 商标 LIKE '%百事可乐%';"
+    },
+    {
+        "instruction": "<question>:查询表中承检机构为“国家质量监督检验检疫总局”的企业名称和抽查结果\nCREATE TABLE 产品质量抽查表 (序号 FLOAT,\n企业名称 VARCHAR(255),\n所在省 VARCHAR(255),\n商标 VARCHAR(255),\n规格型号 VARCHAR(255),\n生产日期/批号 VARCHAR(255),\n抽查结果 VARCHAR(255),\n承检机构 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 企业名称, 抽查结果 FROM 产品质量抽查表 WHERE 承检机构 = '国家质量监督检验检疫总局';"
+    },
+    {
+        "instruction": "<question>:查询表中每个省份的企业数量（按照企业数量从高到低排序）\nCREATE TABLE 产品质量抽查表 (序号 FLOAT,\n企业名称 VARCHAR(255),\n所在省 VARCHAR(255),\n商标 VARCHAR(255),\n规格型号 VARCHAR(255),\n生产日期/批号 VARCHAR(255),\n抽查结果 VARCHAR(255),\n承检机构 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 所在省, COUNT(企业名称) AS 企业数量 FROM 产品质量抽查表 GROUP BY 所在省 ORDER BY 企业数量 DESC;"
+    },
+    {
+        "instruction": "<question>:按照城市名升序排列结果\nCREATE TABLE 城市成交情况表 (城市 VARCHAR(255),\n本周成交 FLOAT,\n本周成交环比 VARCHAR(255),\n去年同期周均成交 FLOAT,\n今年同期周均成交 FLOAT,\n周均成交同比 FLOAT,\n消化时间（周） VARCHAR(255),\n消化时间环比 VARCHAR(255),\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 城市成交情况表 ORDER BY 城市 ASC"
+    },
+    {
+        "instruction": "<question>:查看本周成交量大于1000的数据\nCREATE TABLE 城市成交情况表 (城市 VARCHAR(255),\n本周成交 FLOAT,\n本周成交环比 VARCHAR(255),\n去年同期周均成交 FLOAT,\n今年同期周均成交 FLOAT,\n周均成交同比 FLOAT,\n消化时间（周） VARCHAR(255),\n消化时间环比 VARCHAR(255),\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 城市成交情况表 WHERE 本周成交 > 1000"
+    },
+    {
+        "instruction": "<question>:统计总共有多少个城市\nCREATE TABLE 城市成交情况表 (城市 VARCHAR(255),\n本周成交 FLOAT,\n本周成交环比 VARCHAR(255),\n去年同期周均成交 FLOAT,\n今年同期周均成交 FLOAT,\n周均成交同比 FLOAT,\n消化时间（周） VARCHAR(255),\n消化时间环比 VARCHAR(255),\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(DISTINCT 城市) FROM 城市成交情况表"
+    },
+    {
+        "instruction": "<question>:查看周均成交同比增长率大于10%的城市\nCREATE TABLE 城市成交情况表 (城市 VARCHAR(255),\n本周成交 FLOAT,\n本周成交环比 VARCHAR(255),\n去年同期周均成交 FLOAT,\n今年同期周均成交 FLOAT,\n周均成交同比 FLOAT,\n消化时间（周） VARCHAR(255),\n消化时间环比 VARCHAR(255),\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 城市成交情况表 WHERE 周均成交同比 > 1.1"
+    },
+    {
+        "instruction": "<question>:查看消化时间超过3周的城市\nCREATE TABLE 城市成交情况表 (城市 VARCHAR(255),\n本周成交 FLOAT,\n本周成交环比 VARCHAR(255),\n去年同期周均成交 FLOAT,\n今年同期周均成交 FLOAT,\n周均成交同比 FLOAT,\n消化时间（周） VARCHAR(255),\n消化时间环比 VARCHAR(255),\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 城市成交情况表 WHERE 消化时间（周） > '3周'"
+    },
+    {
+        "instruction": "<question>:按照本周成交量降序排列结果\nCREATE TABLE 城市成交情况表 (城市 VARCHAR(255),\n本周成交 FLOAT,\n本周成交环比 VARCHAR(255),\n去年同期周均成交 FLOAT,\n今年同期周均成交 FLOAT,\n周均成交同比 FLOAT,\n消化时间（周） VARCHAR(255),\n消化时间环比 VARCHAR(255),\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 城市成交情况表 ORDER BY 本周成交 DESC"
+    },
+    {
+        "instruction": "<question>:查看器械使用记录表中的所有数据\nCREATE TABLE 器械使用记录 (编号 FLOAT,\n器械名称 VARCHAR(255),\n使用科室 VARCHAR(255),\n数量 FLOAT,\n单位 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 器械使用记录"
+    },
+    {
+        "instruction": "<question>:查询使用科室为'外科'的记录，并按数量从大到小排序\nCREATE TABLE 器械使用记录 (编号 FLOAT,\n器械名称 VARCHAR(255),\n使用科室 VARCHAR(255),\n数量 FLOAT,\n单位 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 器械使用记录 WHERE 使用科室='外科' ORDER BY 数量 DESC"
+    },
+    {
+        "instruction": "<question>:查询使用数量大于100的器械名称\nCREATE TABLE 器械使用记录 (编号 FLOAT,\n器械名称 VARCHAR(255),\n使用科室 VARCHAR(255),\n数量 FLOAT,\n单位 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT DISTINCT 器械名称 FROM 器械使用记录 WHERE 数量>100"
+    },
+    {
+        "instruction": "<question>:查询使用数量大于50的器械数量和科室，列名为'使用量'和'科室'\nCREATE TABLE 器械使用记录 (编号 FLOAT,\n器械名称 VARCHAR(255),\n使用科室 VARCHAR(255),\n数量 FLOAT,\n单位 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 数量 AS 使用量, 使用科室 AS 科室 FROM 器械使用记录 WHERE 数量>50"
+    },
+    {
+        "instruction": "<question>:查询器械名称中包含'手术'关键字的记录数量\nCREATE TABLE 器械使用记录 (编号 FLOAT,\n器械名称 VARCHAR(255),\n使用科室 VARCHAR(255),\n数量 FLOAT,\n单位 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(*) FROM 器械使用记录 WHERE 器械名称 LIKE '%手术%'"
+    },
+    {
+        "instruction": "<question>:输出所有获奖类型的名称和数量，按数量从大到小排序\nCREATE TABLE 获奖信息表 (类型 VARCHAR(255),\n获奖等次 VARCHAR(255),\n序号 FLOAT,\n获奖作品 VARCHAR(255),\n获奖作者 VARCHAR(255),\n所在学院 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 类型, COUNT(*) AS 数量 FROM 获奖信息表 GROUP BY 类型 ORDER BY 数量 DESC"
+    },
+    {
+        "instruction": "<question>:输出获奖等次为一等奖，所在学院为A学院的获奖信息\nCREATE TABLE 获奖信息表 (类型 VARCHAR(255),\n获奖等次 VARCHAR(255),\n序号 FLOAT,\n获奖作品 VARCHAR(255),\n获奖作者 VARCHAR(255),\n所在学院 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 获奖信息表 WHERE 获奖等次 = '一等奖' AND 所在学院 LIKE '%A学院%'"
+    },
+    {
+        "instruction": "<question>:查询规划建筑面积、土地出让金最高的5个城市及其值\nCREATE TABLE 300城市土地出让情况 (城市名称 VARCHAR(255),\n规划建筑面积 FLOAT,\n成交楼面均价 FLOAT,\n平均溢价率 FLOAT,\n土地出让金 FLOAT,\n同比 FLOAT);",
+        "input": "",
+        "output": "SELECT DISTINCT 城市名称, 规划建筑面积, 土地出让金 FROM 300城市土地出让情况 ORDER BY 规划建筑面积 DESC, 土地出让金 DESC LIMIT 5"
+    },
+    {
+        "instruction": "<question>:查询成交楼面均价最低的10个城市及其值\nCREATE TABLE 300城市土地出让情况 (城市名称 VARCHAR(255),\n规划建筑面积 FLOAT,\n成交楼面均价 FLOAT,\n平均溢价率 FLOAT,\n土地出让金 FLOAT,\n同比 FLOAT);",
+        "input": "",
+        "output": "SELECT DISTINCT 城市名称, 成交楼面均价 FROM 300城市土地出让情况 ORDER BY 成交楼面均价 ASC LIMIT 10"
+    },
+    {
+        "instruction": "<question>:查询平均溢价率大于30%的城市数量\nCREATE TABLE 300城市土地出让情况 (城市名称 VARCHAR(255),\n规划建筑面积 FLOAT,\n成交楼面均价 FLOAT,\n平均溢价率 FLOAT,\n土地出让金 FLOAT,\n同比 FLOAT);",
+        "input": "",
+        "output": "SELECT COUNT(DISTINCT 城市名称) FROM 300城市土地出让情况 WHERE 平均溢价率 > 30"
+    },
+    {
+        "instruction": "<question>:查询同比增长率最高的5个城市及其值\nCREATE TABLE 300城市土地出让情况 (城市名称 VARCHAR(255),\n规划建筑面积 FLOAT,\n成交楼面均价 FLOAT,\n平均溢价率 FLOAT,\n土地出让金 FLOAT,\n同比 FLOAT);",
+        "input": "",
+        "output": "SELECT DISTINCT 城市名称, 同比 FROM 300城市土地出让情况 ORDER BY 同比 DESC LIMIT 5"
+    },
+    {
+        "instruction": "<question>:查询规划建筑面积、成交楼面均价、平均溢价率、土地出让金的平均值\nCREATE TABLE 300城市土地出让情况 (城市名称 VARCHAR(255),\n规划建筑面积 FLOAT,\n成交楼面均价 FLOAT,\n平均溢价率 FLOAT,\n土地出让金 FLOAT,\n同比 FLOAT);",
+        "input": "",
+        "output": "SELECT AVG(规划建筑面积), AVG(成交楼面均价), AVG(平均溢价率), AVG(土地出让金) FROM 300城市土地出让情况"
+    },
+    {
+        "instruction": "<question>:查询所有出版社为AAA的图书信息并按照出版年从新到旧排序\nCREATE TABLE 图书信息表 (题名 VARCHAR(255),\n责任者 VARCHAR(255),\n出版社 VARCHAR(255),\n出版年 FLOAT,\n索书号 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 图书信息表 WHERE 出版社='AAA' ORDER BY 出版年 DESC;"
+    },
+    {
+        "instruction": "<question>:查询出版社为BBB且出版年晚于2010年的图书信息，并计算平均出版年份\nCREATE TABLE 图书信息表 (题名 VARCHAR(255),\n责任者 VARCHAR(255),\n出版社 VARCHAR(255),\n出版年 FLOAT,\n索书号 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 图书信息表 WHERE 出版社='BBB' AND 出版年>2010; SELECT AVG(出版年) FROM 图书信息表 WHERE 出版社='BBB' AND 出版年>2010;"
+    },
+    {
+        "instruction": "<question>:查询每个责任者出版的图书数量，并按照数量从多到少进行排序\nCREATE TABLE 图书信息表 (题名 VARCHAR(255),\n责任者 VARCHAR(255),\n出版社 VARCHAR(255),\n出版年 FLOAT,\n索书号 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 责任者, COUNT(*) AS 出版数量 FROM 图书信息表 GROUP BY 责任者 ORDER BY 出版数量 DESC;"
+    },
+    {
+        "instruction": "<question>:查询某个索书号下的所有图书信息，并计算平均出版年份\nCREATE TABLE 图书信息表 (题名 VARCHAR(255),\n责任者 VARCHAR(255),\n出版社 VARCHAR(255),\n出版年 FLOAT,\n索书号 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 图书信息表 WHERE 索书号='xxx'; SELECT AVG(出版年) FROM 图书信息表 WHERE 索书号='xxx';"
+    },
+    {
+        "instruction": "<question>:哪些企业生产的产品抽查结果不合格？\nCREATE TABLE 电商产品抽查表 (序号 FLOAT,\n企业名称 VARCHAR(255),\n所在地 VARCHAR(255),\n电商平台 VARCHAR(255),\n产品名称 VARCHAR(255),\n规格型号 VARCHAR(255),\n生产日期/批号 VARCHAR(255),\n抽查结果 VARCHAR(255),\n承检机构 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 企业名称 FROM 电商产品抽查表 WHERE 抽查结果 = '不合格' GROUP BY 企业名称 HAVING COUNT(*) > 1;"
+    },
+    {
+        "instruction": "<question>:哪些产品的生产日期或批号包含特定关键词？\nCREATE TABLE 电商产品抽查表 (序号 FLOAT,\n企业名称 VARCHAR(255),\n所在地 VARCHAR(255),\n电商平台 VARCHAR(255),\n产品名称 VARCHAR(255),\n规格型号 VARCHAR(255),\n生产日期/批号 VARCHAR(255),\n抽查结果 VARCHAR(255),\n承检机构 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 产品名称, 生产日期/批号 FROM 电商产品抽查表 WHERE 生产日期/批号 LIKE '%特定关键词%';"
+    },
+    {
+        "instruction": "<question>:哪些企业生产的所有产品都符合抽查标准？\nCREATE TABLE 电商产品抽查表 (序号 FLOAT,\n企业名称 VARCHAR(255),\n所在地 VARCHAR(255),\n电商平台 VARCHAR(255),\n产品名称 VARCHAR(255),\n规格型号 VARCHAR(255),\n生产日期/批号 VARCHAR(255),\n抽查结果 VARCHAR(255),\n承检机构 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 企业名称 FROM 电商产品抽查表 GROUP BY 企业名称 HAVING COUNT(DISTINCT 抽查结果) = 1 AND MIN(抽查结果) = '合格';"
+    },
+    {
+        "instruction": "<question>:查询招聘人数大于5人的岗位信息\nCREATE TABLE 招聘信息 (序号 FLOAT,\n岗位代码 VARCHAR(255),\n招聘科室 VARCHAR(255),\n招聘岗位 VARCHAR(255),\n招聘人数 FLOAT,\n性别要求 VARCHAR(255),\n学历要求 VARCHAR(255),\n学历性质要求 VARCHAR(255),\n专业要求 VARCHAR(255),\n是否笔试 VARCHAR(255),\n是否面试 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 招聘信息 WHERE 招聘人数 > 5"
+    },
+    {
+        "instruction": "<question>:按照招聘人数从高到低进行排序\nCREATE TABLE 招聘信息 (序号 FLOAT,\n岗位代码 VARCHAR(255),\n招聘科室 VARCHAR(255),\n招聘岗位 VARCHAR(255),\n招聘人数 FLOAT,\n性别要求 VARCHAR(255),\n学历要求 VARCHAR(255),\n学历性质要求 VARCHAR(255),\n专业要求 VARCHAR(255),\n是否笔试 VARCHAR(255),\n是否面试 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 招聘信息 ORDER BY 招聘人数 DESC"
+    },
+    {
+        "instruction": "<question>:查找招聘科室为\"人力资源部\"的岗位信息\nCREATE TABLE 招聘信息 (序号 FLOAT,\n岗位代码 VARCHAR(255),\n招聘科室 VARCHAR(255),\n招聘岗位 VARCHAR(255),\n招聘人数 FLOAT,\n性别要求 VARCHAR(255),\n学历要求 VARCHAR(255),\n学历性质要求 VARCHAR(255),\n专业要求 VARCHAR(255),\n是否笔试 VARCHAR(255),\n是否面试 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 招聘信息 WHERE 招聘科室 = '人力资源部'"
+    },
+    {
+        "instruction": "<question>:按照学历要求对数据进行分类，并统计每个分类的数据量\nCREATE TABLE 招聘信息 (序号 FLOAT,\n岗位代码 VARCHAR(255),\n招聘科室 VARCHAR(255),\n招聘岗位 VARCHAR(255),\n招聘人数 FLOAT,\n性别要求 VARCHAR(255),\n学历要求 VARCHAR(255),\n学历性质要求 VARCHAR(255),\n专业要求 VARCHAR(255),\n是否笔试 VARCHAR(255),\n是否面试 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 学历要求,COUNT(*) FROM 招聘信息 GROUP BY 学历要求"
+    },
+    {
+        "instruction": "<question>:查询所有数据按被抽样单位所在省份升序排列\nCREATE TABLE 抽样检测信息表 (序号 FLOAT,\n标称生产企业名称 VARCHAR(255),\n标称生产企业地址 VARCHAR(255),\n被抽样单位名称 VARCHAR(255),\n被抽样单位所在省份 VARCHAR(255),\n食品名称 VARCHAR(255),\n规格型号 VARCHAR(255),\n生产日期/批号 VARCHAR(255),\n分类 VARCHAR(255),\n任务来源/项目名称 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 抽样检测信息表 ORDER BY 被抽样单位所在省份 ASC;"
+    },
+    {
+        "instruction": "<question>:查询所有数据中分类为蔬菜的记录\nCREATE TABLE 抽样检测信息表 (序号 FLOAT,\n标称生产企业名称 VARCHAR(255),\n标称生产企业地址 VARCHAR(255),\n被抽样单位名称 VARCHAR(255),\n被抽样单位所在省份 VARCHAR(255),\n食品名称 VARCHAR(255),\n规格型号 VARCHAR(255),\n生产日期/批号 VARCHAR(255),\n分类 VARCHAR(255),\n任务来源/项目名称 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 抽样检测信息表 WHERE 分类 = '蔬菜';"
+    },
+    {
+        "instruction": "<question>:查询所有数据中食品名称中包含“牛肉”字样的记录\nCREATE TABLE 抽样检测信息表 (序号 FLOAT,\n标称生产企业名称 VARCHAR(255),\n标称生产企业地址 VARCHAR(255),\n被抽样单位名称 VARCHAR(255),\n被抽样单位所在省份 VARCHAR(255),\n食品名称 VARCHAR(255),\n规格型号 VARCHAR(255),\n生产日期/批号 VARCHAR(255),\n分类 VARCHAR(255),\n任务来源/项目名称 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 抽样检测信息表 WHERE 食品名称 LIKE '%牛肉%';"
+    },
+    {
+        "instruction": "<question>:按被抽样单位所在省份分组，统计每个省份有多少条记录\nCREATE TABLE 抽样检测信息表 (序号 FLOAT,\n标称生产企业名称 VARCHAR(255),\n标称生产企业地址 VARCHAR(255),\n被抽样单位名称 VARCHAR(255),\n被抽样单位所在省份 VARCHAR(255),\n食品名称 VARCHAR(255),\n规格型号 VARCHAR(255),\n生产日期/批号 VARCHAR(255),\n分类 VARCHAR(255),\n任务来源/项目名称 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 被抽样单位所在省份, COUNT(*) FROM 抽样检测信息表 GROUP BY 被抽样单位所在省份;"
+    },
+    {
+        "instruction": "<question>:按缴费类型筛选出所有保险公司和他们提供的产品名称。\nCREATE TABLE 保险产品信息 (保险公司 VARCHAR(255),\n产品名称 VARCHAR(255),\n产品类型 VARCHAR(255),\n缴费类型 VARCHAR(255),\n缴费期限 VARCHAR(255),\n保险期限 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 保险公司, 产品名称 FROM 保险产品信息 WHERE 缴费类型='年缴'"
+    },
+    {
+        "instruction": "<question>:对缴费期限进行降序排序，列出前10个产品名称和所属保险公司。\nCREATE TABLE 保险产品信息 (保险公司 VARCHAR(255),\n产品名称 VARCHAR(255),\n产品类型 VARCHAR(255),\n缴费类型 VARCHAR(255),\n缴费期限 VARCHAR(255),\n保险期限 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 产品名称, 保险公司 FROM 保险产品信息 ORDER BY 缴费期限 DESC LIMIT 10"
+    },
+    {
+        "instruction": "<question>:统计每个保险公司提供的产品数量。\nCREATE TABLE 保险产品信息 (保险公司 VARCHAR(255),\n产品名称 VARCHAR(255),\n产品类型 VARCHAR(255),\n缴费类型 VARCHAR(255),\n缴费期限 VARCHAR(255),\n保险期限 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 保险公司, COUNT(*) AS 产品数量 FROM 保险产品信息 GROUP BY 保险公司"
+    },
+    {
+        "instruction": "<question>:按产品类型分类，统计每个产品类型的数量。\nCREATE TABLE 保险产品信息 (保险公司 VARCHAR(255),\n产品名称 VARCHAR(255),\n产品类型 VARCHAR(255),\n缴费类型 VARCHAR(255),\n缴费期限 VARCHAR(255),\n保险期限 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 产品类型, COUNT(*) AS 数量 FROM 保险产品信息 GROUP BY 产品类型"
+    },
+    {
+        "instruction": "<question>:查询展位号为'1001'的企业招聘的岗位及人数\nCREATE TABLE 招聘信息 (序号 FLOAT,\n展位号 VARCHAR(255),\n企业名单 VARCHAR(255),\n企业性质 VARCHAR(255),\n招聘岗位 VARCHAR(255),\n招聘人数 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 招聘岗位, 招聘人数 FROM 招聘信息 WHERE 展位号 = '1001'"
+    },
+    {
+        "instruction": "<question>:查询所有企业的招聘岗位，按岗位分类并统计每个岗位招聘的人数，同时只显示招聘人数大于5人的岗位\nCREATE TABLE 招聘信息 (序号 FLOAT,\n展位号 VARCHAR(255),\n企业名单 VARCHAR(255),\n企业性质 VARCHAR(255),\n招聘岗位 VARCHAR(255),\n招聘人数 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 招聘岗位, COUNT(*) AS 招聘人数 FROM 招聘信息 GROUP BY 招聘岗位 HAVING COUNT(*)>5"
+    },
+    {
+        "instruction": "<question>:请列出需求方为某个公司的所有项目名称。\nCREATE TABLE 表名 (序号 FLOAT,\n项目名称 VARCHAR(255),\n需求方 VARCHAR(255),\n中标方 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 项目名称 FROM 表名 WHERE 需求方 = '某个公司'"
+    },
+    {
+        "instruction": "<question>:请按中标方分组，列出每个中标方中中标项目数最多的前3个项目名称和数量。\nCREATE TABLE 表名 (序号 FLOAT,\n项目名称 VARCHAR(255),\n需求方 VARCHAR(255),\n中标方 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 中标方,项目名称,COUNT(*) AS 中标数量 FROM 表名 GROUP BY 中标方,项目名称 ORDER BY 中标方,COUNT(*) DESC LIMIT 3"
+    },
+    {
+        "instruction": "<question>:请列出项目名称中包含某个关键词的记录，并按序号升序排列。\nCREATE TABLE 表名 (序号 FLOAT,\n项目名称 VARCHAR(255),\n需求方 VARCHAR(255),\n中标方 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 表名 WHERE 项目名称 LIKE '%关键词%' ORDER BY 序号 ASC"
+    },
+    {
+        "instruction": "<question>:预期收益最高的产品是哪个？\nCREATE TABLE 产品信息表 (序号 FLOAT,\n产品名称 VARCHAR(255),\n产品编码 VARCHAR(255),\n产品期限 VARCHAR(255),\n预期收益 VARCHAR(255),\n收益特点 VARCHAR(255),\n风险评级 VARCHAR(255),\n产品发行机构 VARCHAR(255),\n产品销售方 VARCHAR(255),\n投资者范围 VARCHAR(255),\n收费标准及方式 VARCHAR(255),\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 产品名称 FROM 产品信息表 ORDER BY 预期收益 DESC LIMIT 1;"
+    },
+    {
+        "instruction": "<question>:哪些产品的风险评级为高风险？\nCREATE TABLE 产品信息表 (序号 FLOAT,\n产品名称 VARCHAR(255),\n产品编码 VARCHAR(255),\n产品期限 VARCHAR(255),\n预期收益 VARCHAR(255),\n收益特点 VARCHAR(255),\n风险评级 VARCHAR(255),\n产品发行机构 VARCHAR(255),\n产品销售方 VARCHAR(255),\n投资者范围 VARCHAR(255),\n收费标准及方式 VARCHAR(255),\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 产品名称 FROM 产品信息表 WHERE 风险评级='高风险';"
+    },
+    {
+        "instruction": "<question>:销售方为A公司的产品有哪些？\nCREATE TABLE 产品信息表 (序号 FLOAT,\n产品名称 VARCHAR(255),\n产品编码 VARCHAR(255),\n产品期限 VARCHAR(255),\n预期收益 VARCHAR(255),\n收益特点 VARCHAR(255),\n风险评级 VARCHAR(255),\n产品发行机构 VARCHAR(255),\n产品销售方 VARCHAR(255),\n投资者范围 VARCHAR(255),\n收费标准及方式 VARCHAR(255),\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 产品名称 FROM 产品信息表 WHERE 产品销售方='A公司';"
+    },
+    {
+        "instruction": "<question>:查询本期和上期数据相等的城市\nCREATE TABLE 数据表 (城市 VARCHAR(255),\n本期 FLOAT,\n上期 FLOAT,\n去年同期 FLOAT,\n本年累计 FLOAT,\n去年累计 FLOAT,\n11年下半年 FLOAT,\n11年上半年 FLOAT,\n10年下半年 FLOAT,\n本期环比 FLOAT,\n本期同比 FLOAT,\n累计同比 FLOAT);",
+        "input": "",
+        "output": "SELECT 城市 FROM 数据表 WHERE 本期 = 上期;"
+    },
+    {
+        "instruction": "<question>:查询本期的城市数据，按照本期从大到小排序并限制前10条数据\nCREATE TABLE 数据表 (城市 VARCHAR(255),\n本期 FLOAT,\n上期 FLOAT,\n去年同期 FLOAT,\n本年累计 FLOAT,\n去年累计 FLOAT,\n11年下半年 FLOAT,\n11年上半年 FLOAT,\n10年下半年 FLOAT,\n本期环比 FLOAT,\n本期同比 FLOAT,\n累计同比 FLOAT);",
+        "input": "",
+        "output": "SELECT 城市, 本期 FROM 数据表 ORDER BY 本期 DESC LIMIT 10;"
+    },
+    {
+        "instruction": "<question>:查询城市名称中包含“京”的城市数据\nCREATE TABLE 数据表 (城市 VARCHAR(255),\n本期 FLOAT,\n上期 FLOAT,\n去年同期 FLOAT,\n本年累计 FLOAT,\n去年累计 FLOAT,\n11年下半年 FLOAT,\n11年上半年 FLOAT,\n10年下半年 FLOAT,\n本期环比 FLOAT,\n本期同比 FLOAT,\n累计同比 FLOAT);",
+        "input": "",
+        "output": "SELECT 城市, 本期, 上期 FROM 数据表 WHERE 城市 LIKE '%京%';"
+    },
+    {
+        "instruction": "<question>:请问有哪些职位在招聘信息表中？\nCREATE TABLE 招聘信息表 (招聘岗位 VARCHAR(255),\n岗位类别 VARCHAR(255),\n招聘人数 FLOAT,\n招聘对象 VARCHAR(255),\n年龄 VARCHAR(255),\n专业 VARCHAR(255),\n学历/学位 VARCHAR(255),\n其他 VARCHAR(255),\n笔试科目 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT DISTINCT 招聘岗位 FROM 招聘信息表"
+    },
+    {
+        "instruction": "<question>:请问有哪些职位类别在招聘信息表中？\nCREATE TABLE 招聘信息表 (招聘岗位 VARCHAR(255),\n岗位类别 VARCHAR(255),\n招聘人数 FLOAT,\n招聘对象 VARCHAR(255),\n年龄 VARCHAR(255),\n专业 VARCHAR(255),\n学历/学位 VARCHAR(255),\n其他 VARCHAR(255),\n笔试科目 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT DISTINCT 岗位类别 FROM 招聘信息表"
+    },
+    {
+        "instruction": "<question>:请问有哪些不同的招聘对象在招聘信息表中？\nCREATE TABLE 招聘信息表 (招聘岗位 VARCHAR(255),\n岗位类别 VARCHAR(255),\n招聘人数 FLOAT,\n招聘对象 VARCHAR(255),\n年龄 VARCHAR(255),\n专业 VARCHAR(255),\n学历/学位 VARCHAR(255),\n其他 VARCHAR(255),\n笔试科目 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT DISTINCT 招聘对象 FROM 招聘信息表"
+    },
+    {
+        "instruction": "<question>:请问招聘信息表中有哪些招聘人数大于10人的招聘岗位？\nCREATE TABLE 招聘信息表 (招聘岗位 VARCHAR(255),\n岗位类别 VARCHAR(255),\n招聘人数 FLOAT,\n招聘对象 VARCHAR(255),\n年龄 VARCHAR(255),\n专业 VARCHAR(255),\n学历/学位 VARCHAR(255),\n其他 VARCHAR(255),\n笔试科目 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 招聘岗位 FROM 招聘信息表 WHERE 招聘人数 > 10"
+    },
+    {
+        "instruction": "<question>:请问在招聘信息表中，哪些职位要求笔试科目为数学？\nCREATE TABLE 招聘信息表 (招聘岗位 VARCHAR(255),\n岗位类别 VARCHAR(255),\n招聘人数 FLOAT,\n招聘对象 VARCHAR(255),\n年龄 VARCHAR(255),\n专业 VARCHAR(255),\n学历/学位 VARCHAR(255),\n其他 VARCHAR(255),\n笔试科目 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 招聘岗位 FROM 招聘信息表 WHERE 笔试科目 = '数学'"
+    },
+    {
+        "instruction": "<question>:请问在招聘信息表中，哪些职位要求笔试科目为英语？\nCREATE TABLE 招聘信息表 (招聘岗位 VARCHAR(255),\n岗位类别 VARCHAR(255),\n招聘人数 FLOAT,\n招聘对象 VARCHAR(255),\n年龄 VARCHAR(255),\n专业 VARCHAR(255),\n学历/学位 VARCHAR(255),\n其他 VARCHAR(255),\n笔试科目 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 招聘岗位 FROM 招聘信息表 WHERE 笔试科目 = '英语'"
+    },
+    {
+        "instruction": "<question>:请问招聘信息表中各个职位类别的招聘人数都是多少？\nCREATE TABLE 招聘信息表 (招聘岗位 VARCHAR(255),\n岗位类别 VARCHAR(255),\n招聘人数 FLOAT,\n招聘对象 VARCHAR(255),\n年龄 VARCHAR(255),\n专业 VARCHAR(255),\n学历/学位 VARCHAR(255),\n其他 VARCHAR(255),\n笔试科目 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 岗位类别,SUM(招聘人数) FROM 招聘信息表 GROUP BY 岗位类别"
+    },
+    {
+        "instruction": "<question>:请问在招聘信息表中，年龄最大的招聘对象是谁？\nCREATE TABLE 招聘信息表 (招聘岗位 VARCHAR(255),\n岗位类别 VARCHAR(255),\n招聘人数 FLOAT,\n招聘对象 VARCHAR(255),\n年龄 VARCHAR(255),\n专业 VARCHAR(255),\n学历/学位 VARCHAR(255),\n其他 VARCHAR(255),\n笔试科目 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 招聘对象 FROM 招聘信息表 ORDER BY 年龄 DESC LIMIT 1"
+    },
+    {
+        "instruction": "<question>:请问在招聘信息表中，一共有多少招聘岗位？\nCREATE TABLE 招聘信息表 (招聘岗位 VARCHAR(255),\n岗位类别 VARCHAR(255),\n招聘人数 FLOAT,\n招聘对象 VARCHAR(255),\n年龄 VARCHAR(255),\n专业 VARCHAR(255),\n学历/学位 VARCHAR(255),\n其他 VARCHAR(255),\n笔试科目 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(DISTINCT 招聘岗位) FROM 招聘信息表"
+    },
+    {
+        "instruction": "<question>:查询所有课程名称以“计算机”开头的课程信息\nCREATE TABLE 课程表 (序号 FLOAT,\n课程号 FLOAT,\n课程名称 VARCHAR(255),\n课程类别 VARCHAR(255),\n授课老师 VARCHAR(255),\n授课对象 VARCHAR(255),\n考试形式 VARCHAR(255),\n考试日期/论文截止日期 VARCHAR(255),\n考试地点/提交论文地点 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 课程表 WHERE 课程名称 LIKE '计算机%';"
+    },
+    {
+        "instruction": "<question>:查询总共有多少门考试形式为“闭卷考试”的课程\nCREATE TABLE 课程表 (序号 FLOAT,\n课程号 FLOAT,\n课程名称 VARCHAR(255),\n课程类别 VARCHAR(255),\n授课老师 VARCHAR(255),\n授课对象 VARCHAR(255),\n考试形式 VARCHAR(255),\n考试日期/论文截止日期 VARCHAR(255),\n考试地点/提交论文地点 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(*) AS 考试课程总数 FROM 课程表 WHERE 考试形式 = '闭卷考试';"
+    },
+    {
+        "instruction": "<question>:查询股票信息表中股票简称为'华泰证券'的市值和股价\nCREATE TABLE 股票信息 (证券代码 VARCHAR(255),\n证券简称 VARCHAR(255),\n最新市值 FLOAT,\n最新股价 FLOAT,\n本周跌幅后十 FLOAT);",
+        "input": "",
+        "output": "SELECT 最新市值,最新股价 FROM 股票信息 WHERE 证券简称='华泰证券'"
+    },
+    {
+        "instruction": "<question>:查询股票市值前十的股票信息\nCREATE TABLE 股票信息 (证券代码 VARCHAR(255),\n证券简称 VARCHAR(255),\n最新市值 FLOAT,\n最新股价 FLOAT,\n本周跌幅后十 FLOAT);",
+        "input": "",
+        "output": "SELECT * FROM 股票信息 ORDER BY 最新市值 DESC LIMIT 10"
+    },
+    {
+        "instruction": "<question>:查询本周跌幅后十中市值最大的股票信息\nCREATE TABLE 股票信息 (证券代码 VARCHAR(255),\n证券简称 VARCHAR(255),\n最新市值 FLOAT,\n最新股价 FLOAT,\n本周跌幅后十 FLOAT);",
+        "input": "",
+        "output": "SELECT * FROM 股票信息 WHERE 本周跌幅后十=1 ORDER BY 最新市值 DESC LIMIT 1"
+    },
+    {
+        "instruction": "<question>:查询股票简称中包含'银行'并且市值大于500亿元的股票信息\nCREATE TABLE 股票信息 (证券代码 VARCHAR(255),\n证券简称 VARCHAR(255),\n最新市值 FLOAT,\n最新股价 FLOAT,\n本周跌幅后十 FLOAT);",
+        "input": "",
+        "output": "SELECT * FROM 股票信息 WHERE 证券简称 LIKE '%银行%' AND 最新市值>500"
+    },
+    {
+        "instruction": "<question>:查询商品名称包含‘饮料’的商品代码和数量\nCREATE TABLE 商品信息 (商品代码 VARCHAR(255),\n商品名称 VARCHAR(255),\n单位 VARCHAR(255),\n数量 FLOAT);",
+        "input": "",
+        "output": "SELECT DISTINCT 商品代码, 数量 FROM 商品信息 WHERE 商品名称 LIKE '%饮料%';"
+    },
+    {
+        "instruction": "<question>:找出数量最多的前五种商品\nCREATE TABLE 商品信息 (商品代码 VARCHAR(255),\n商品名称 VARCHAR(255),\n单位 VARCHAR(255),\n数量 FLOAT);",
+        "input": "",
+        "output": "SELECT 商品代码, 商品名称, 单位, 数量 FROM 商品信息 ORDER BY 数量 DESC LIMIT 5;"
+    },
+    {
+        "instruction": "<question>:查询每个单位的商品数量是否都大于50\nCREATE TABLE 商品信息 (商品代码 VARCHAR(255),\n商品名称 VARCHAR(255),\n单位 VARCHAR(255),\n数量 FLOAT);",
+        "input": "",
+        "output": "SELECT 单位, MIN(数量) >= 50 AS all_more_than_50 FROM 商品信息 GROUP BY 单位;"
+    },
+    {
+        "instruction": "<question>:查询每个单位的平均商品数量，并过滤出平均数量大于100的单位\nCREATE TABLE 商品信息 (商品代码 VARCHAR(255),\n商品名称 VARCHAR(255),\n单位 VARCHAR(255),\n数量 FLOAT);",
+        "input": "",
+        "output": "SELECT 单位, AVG(数量) AS avg_数量 FROM 商品信息 GROUP BY 单位 HAVING AVG(数量) > 100;"
+    },
+    {
+        "instruction": "<question>:查询商品名称包含‘零食’且数量大于100的商品名称和数量，并按数量从高到低排序\nCREATE TABLE 商品信息 (商品代码 VARCHAR(255),\n商品名称 VARCHAR(255),\n单位 VARCHAR(255),\n数量 FLOAT);",
+        "input": "",
+        "output": "SELECT 商品名称, 数量 FROM 商品信息 WHERE 商品名称 LIKE '%零食%' AND 数量 > 100 ORDER BY 数量 DESC;"
+    },
+    {
+        "instruction": "<question>:查询每个单位的商品数量及数量大于50的商品数量占比\nCREATE TABLE 商品信息 (商品代码 VARCHAR(255),\n商品名称 VARCHAR(255),\n单位 VARCHAR(255),\n数量 FLOAT);",
+        "input": "",
+        "output": "SELECT 单位, COUNT(数量) AS total_数量, COUNT(CASE WHEN 数量 > 50 THEN 1 END) AS more_than_50_数量, COUNT(CASE WHEN 数量 > 50 THEN 1 END)*1.0/COUNT(数量)*100 AS ratio FROM 商品信息 GROUP BY 单位;"
+    },
+    {
+        "instruction": "<question>:请列出排名前十的游戏\nCREATE TABLE 游戏数据 (排名 FLOAT,\n游戏 VARCHAR(255),\n服务器 FLOAT,\n开发商 VARCHAR(255),\n发行商 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT DISTINCT * FROM 游戏数据 ORDER BY 排名 LIMIT 10"
+    },
+    {
+        "instruction": "<question>:请列出开发商为Supercell的游戏\nCREATE TABLE 游戏数据 (排名 FLOAT,\n游戏 VARCHAR(255),\n服务器 FLOAT,\n开发商 VARCHAR(255),\n发行商 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT DISTINCT * FROM 游戏数据 WHERE 开发商='Supercell'"
+    },
+    {
+        "instruction": "<question>:请列出发行商为Tencent且排名不小于50的游戏\nCREATE TABLE 游戏数据 (排名 FLOAT,\n游戏 VARCHAR(255),\n服务器 FLOAT,\n开发商 VARCHAR(255),\n发行商 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT DISTINCT * FROM 游戏数据 WHERE 发行商='Tencent' AND 排名>=50"
+    },
+    {
+        "instruction": "<question>:请列出以字母'B'开头的游戏名\nCREATE TABLE 游戏数据 (排名 FLOAT,\n游戏 VARCHAR(255),\n服务器 FLOAT,\n开发商 VARCHAR(255),\n发行商 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT DISTINCT * FROM 游戏数据 WHERE 游戏 LIKE 'B%'"
+    },
+    {
+        "instruction": "<question>:请列出排名前十的开发商和其所开发的游戏数\nCREATE TABLE 游戏数据 (排名 FLOAT,\n游戏 VARCHAR(255),\n服务器 FLOAT,\n开发商 VARCHAR(255),\n发行商 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 开发商, COUNT(*) AS 游戏数 FROM 游戏数据 GROUP BY 开发商 ORDER BY 游戏数 DESC LIMIT 10"
+    },
+    {
+        "instruction": "<question>:请列出发行商为Activision且服务器数量大于5的游戏，按排名从低到高排序\nCREATE TABLE 游戏数据 (排名 FLOAT,\n游戏 VARCHAR(255),\n服务器 FLOAT,\n开发商 VARCHAR(255),\n发行商 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT DISTINCT * FROM 游戏数据 WHERE 发行商='Activision' AND 服务器>5 ORDER BY 排名 ASC"
+    },
+    {
+        "instruction": "<question>:展品数量最多的协会是哪个？\nCREATE TABLE 展品信息表 (编号 FLOAT,\n协会 VARCHAR(255),\n参展者 VARCHAR(255),\n展品名称 VARCHAR(255),\n类别 VARCHAR(255),\n框数 FLOAT,\n参展费 FLOAT);",
+        "input": "",
+        "output": "SELECT 协会, COUNT(*) AS 展品数量 FROM 展品信息表 GROUP BY 协会 ORDER BY 展品数量 DESC LIMIT 1;"
+    },
+    {
+        "instruction": "<question>:每个协会参展的总展品数是多少？\nCREATE TABLE 展品信息表 (编号 FLOAT,\n协会 VARCHAR(255),\n参展者 VARCHAR(255),\n展品名称 VARCHAR(255),\n类别 VARCHAR(255),\n框数 FLOAT,\n参展费 FLOAT);",
+        "input": "",
+        "output": "SELECT 协会, COUNT(*) AS 展品数量 FROM 展品信息表 GROUP BY 协会;"
+    },
+    {
+        "instruction": "<question>:参展者中展品数量排名前三的是哪些参展者？\nCREATE TABLE 展品信息表 (编号 FLOAT,\n协会 VARCHAR(255),\n参展者 VARCHAR(255),\n展品名称 VARCHAR(255),\n类别 VARCHAR(255),\n框数 FLOAT,\n参展费 FLOAT);",
+        "input": "",
+        "output": "SELECT 参展者, COUNT(*) AS 展品数量 FROM 展品信息表 GROUP BY 参展者 ORDER BY 展品数量 DESC LIMIT 3;"
+    },
+    {
+        "instruction": "<question>:参展费最高的展品名称是什么？\nCREATE TABLE 展品信息表 (编号 FLOAT,\n协会 VARCHAR(255),\n参展者 VARCHAR(255),\n展品名称 VARCHAR(255),\n类别 VARCHAR(255),\n框数 FLOAT,\n参展费 FLOAT);",
+        "input": "",
+        "output": "SELECT 展品名称 FROM 展品信息表 ORDER BY 参展费 DESC LIMIT 1;"
+    },
+    {
+        "instruction": "<question>:统计每个院系开设的课程数量\nCREATE TABLE 课程信息表 (课程号 FLOAT,\n课程名 VARCHAR(255),\n开课院系 VARCHAR(255),\n课程类别 VARCHAR(255),\n学时 FLOAT,\n学分 FLOAT,\n教师 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 开课院系,COUNT(*) FROM 课程信息表 GROUP BY 开课院系"
+    },
+    {
+        "instruction": "<question>:查询课程学分大于等于2.0的课程信息\nCREATE TABLE 课程信息表 (课程号 FLOAT,\n课程名 VARCHAR(255),\n开课院系 VARCHAR(255),\n课程类别 VARCHAR(255),\n学时 FLOAT,\n学分 FLOAT,\n教师 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 课程信息表 WHERE 学分>=2.0"
+    },
+    {
+        "instruction": "<question>:统计每个课程类别的平均学分，只显示平均学分大于等于3.0的课程类别\nCREATE TABLE 课程信息表 (课程号 FLOAT,\n课程名 VARCHAR(255),\n开课院系 VARCHAR(255),\n课程类别 VARCHAR(255),\n学时 FLOAT,\n学分 FLOAT,\n教师 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 课程类别,AVG(学分) FROM 课程信息表 GROUP BY 课程类别 HAVING AVG(学分)>=3.0"
+    },
+    {
+        "instruction": "<question>:查询课程名包含“数据”字样的课程信息\nCREATE TABLE 课程信息表 (课程号 FLOAT,\n课程名 VARCHAR(255),\n开课院系 VARCHAR(255),\n课程类别 VARCHAR(255),\n学时 FLOAT,\n学分 FLOAT,\n教师 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 课程信息表 WHERE 课程名 LIKE '%数据%'"
+    },
+    {
+        "instruction": "<question>:按课程号升序排列查询所有课程信息，只显示前10条\nCREATE TABLE 课程信息表 (课程号 FLOAT,\n课程名 VARCHAR(255),\n开课院系 VARCHAR(255),\n课程类别 VARCHAR(255),\n学时 FLOAT,\n学分 FLOAT,\n教师 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 课程信息表 ORDER BY 课程号 LIMIT 10"
+    },
+    {
+        "instruction": "<question>:请给出'公司季度出货量数据'表中第二季度出货量最多的3个公司的名称和二季度出货量。\nCREATE TABLE 公司季度出货量数据 (公司 VARCHAR(255),\n一季度出货量 FLOAT,\n一季度同比增长率(%) FLOAT,\n二季度出货量 FLOAT,\n二季度同比增长率(%) FLOAT,\n三季度出货量 FLOAT,\n三季度同比增长率(%) FLOAT);",
+        "input": "",
+        "output": "SELECT 公司, 二季度出货量 FROM 公司季度出货量数据 ORDER BY 二季度出货量 DESC LIMIT 3;"
+    },
+    {
+        "instruction": "<question>:请列出'公司季度出货量数据'表中每个公司的总出货量。\nCREATE TABLE 公司季度出货量数据 (公司 VARCHAR(255),\n一季度出货量 FLOAT,\n一季度同比增长率(%) FLOAT,\n二季度出货量 FLOAT,\n二季度同比增长率(%) FLOAT,\n三季度出货量 FLOAT,\n三季度同比增长率(%) FLOAT);",
+        "input": "",
+        "output": "SELECT 公司, SUM(一季度出货量 + 二季度出货量 + 三季度出货量) AS 总出货量 FROM 公司季度出货量数据 GROUP BY 公司;"
+    },
+    {
+        "instruction": "<question>:按照时间升序排序\nCREATE TABLE 合作信托公司历史募集规模及收益率 (公司 VARCHAR(255),\n时间 FLOAT,\n初始融资规模 FLOAT,\n年利率 VARCHAR(255),\n合作信托公司 VARCHAR(255),\n募资项目 VARCHAR(255),\n期限 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 合作信托公司历史募集规模及收益率 ORDER BY 时间 ASC;"
+    },
+    {
+        "instruction": "<question>:筛选出合作信托公司为XX的记录\nCREATE TABLE 合作信托公司历史募集规模及收益率 (公司 VARCHAR(255),\n时间 FLOAT,\n初始融资规模 FLOAT,\n年利率 VARCHAR(255),\n合作信托公司 VARCHAR(255),\n募资项目 VARCHAR(255),\n期限 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 合作信托公司历史募集规模及收益率 WHERE 合作信托公司 = 'XX';"
+    },
+    {
+        "instruction": "<question>:统计不同合作信托公司共有多少条记录\nCREATE TABLE 合作信托公司历史募集规模及收益率 (公司 VARCHAR(255),\n时间 FLOAT,\n初始融资规模 FLOAT,\n年利率 VARCHAR(255),\n合作信托公司 VARCHAR(255),\n募资项目 VARCHAR(255),\n期限 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 合作信托公司, COUNT(*) FROM 合作信托公司历史募集规模及收益率 GROUP BY 合作信托公司;"
+    },
+    {
+        "instruction": "<question>:按照年利率降序排序\nCREATE TABLE 合作信托公司历史募集规模及收益率 (公司 VARCHAR(255),\n时间 FLOAT,\n初始融资规模 FLOAT,\n年利率 VARCHAR(255),\n合作信托公司 VARCHAR(255),\n募资项目 VARCHAR(255),\n期限 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 合作信托公司历史募集规模及收益率 ORDER BY 年利率 DESC;"
+    },
+    {
+        "instruction": "<question>:统计不同募资项目的数量\nCREATE TABLE 合作信托公司历史募集规模及收益率 (公司 VARCHAR(255),\n时间 FLOAT,\n初始融资规模 FLOAT,\n年利率 VARCHAR(255),\n合作信托公司 VARCHAR(255),\n募资项目 VARCHAR(255),\n期限 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 募资项目, COUNT(*) FROM 合作信托公司历史募集规模及收益率 GROUP BY 募资项目;"
+    },
+    {
+        "instruction": "<question>:筛选出募资项目中包含“基建”关键词的记录\nCREATE TABLE 合作信托公司历史募集规模及收益率 (公司 VARCHAR(255),\n时间 FLOAT,\n初始融资规模 FLOAT,\n年利率 VARCHAR(255),\n合作信托公司 VARCHAR(255),\n募资项目 VARCHAR(255),\n期限 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 合作信托公司历史募集规模及收益率 WHERE 募资项目 LIKE '%基建%';"
+    },
+    {
+        "instruction": "<question>:查询电影院线周票房排行榜中的所有数据\nCREATE TABLE 电影院线周票房排行榜 (院线名称 VARCHAR(255),\n周票房 FLOAT,\n观影人次 FLOAT,\n平均票价 FLOAT);",
+        "input": "",
+        "output": "SELECT * FROM 电影院线周票房排行榜"
+    },
+    {
+        "instruction": "<question>:将电影院线周票房排行榜按周票房降序排列，并只显示前10条数据\nCREATE TABLE 电影院线周票房排行榜 (院线名称 VARCHAR(255),\n周票房 FLOAT,\n观影人次 FLOAT,\n平均票价 FLOAT);",
+        "input": "",
+        "output": "SELECT * FROM 电影院线周票房排行榜 ORDER BY 周票房 DESC LIMIT 10"
+    },
+    {
+        "instruction": "<question>:计算所有电影院线的总周票房、观影人次和平均票价\nCREATE TABLE 电影院线周票房排行榜 (院线名称 VARCHAR(255),\n周票房 FLOAT,\n观影人次 FLOAT,\n平均票价 FLOAT);",
+        "input": "",
+        "output": "SELECT SUM(周票房), SUM(观影人次), AVG(平均票价) FROM 电影院线周票房排行榜"
+    },
+    {
+        "instruction": "<question>:计算每个院线的周票房、观影人次和平均票价的平均值\nCREATE TABLE 电影院线周票房排行榜 (院线名称 VARCHAR(255),\n周票房 FLOAT,\n观影人次 FLOAT,\n平均票价 FLOAT);",
+        "input": "",
+        "output": "SELECT 院线名称, AVG(周票房), AVG(观影人次), AVG(平均票价) FROM 电影院线周票房排行榜 GROUP BY 院线名称"
+    },
+    {
+        "instruction": "<question>:查询周票房排名前10的院线的名称和周票房，并按周票房降序排列\nCREATE TABLE 电影院线周票房排行榜 (院线名称 VARCHAR(255),\n周票房 FLOAT,\n观影人次 FLOAT,\n平均票价 FLOAT);",
+        "input": "",
+        "output": "SELECT 院线名称, 周票房 FROM 电影院线周票房排行榜 ORDER BY 周票房 DESC LIMIT 10"
+    },
+    {
+        "instruction": "<question>:求报名人数大于100的招聘职位信息\nCREATE TABLE 招聘信息表 (序号 FLOAT,\n招聘职位 VARCHAR(255),\n职位代码 FLOAT,\n招聘人数 FLOAT,\n已报名 FLOAT);",
+        "input": "",
+        "output": "SELECT * FROM 招聘信息表 WHERE 已报名 > 100"
+    },
+    {
+        "instruction": "<question>:求已报名人数最多的前5个招聘职位信息\nCREATE TABLE 招聘信息表 (序号 FLOAT,\n招聘职位 VARCHAR(255),\n职位代码 FLOAT,\n招聘人数 FLOAT,\n已报名 FLOAT);",
+        "input": "",
+        "output": "SELECT * FROM 招聘信息表 ORDER BY 已报名 DESC LIMIT 5"
+    },
+    {
+        "instruction": "<question>:筛选出类型为\"国家级\"的项目\nCREATE TABLE 资助项目信息 (序号 VARCHAR(255),\n项目名称 VARCHAR(255),\n资助方 VARCHAR(255),\n类型 VARCHAR(255),\n资助标准 VARCHAR(255),\n资助年限 VARCHAR(255),\n资助年级 VARCHAR(255),\n评选条件 VARCHAR(255),\n学生申请方式及须提交的材料 VARCHAR(255),\n备注 VARCHAR(255),\n院系审批方式及需提交的汇总材料 VARCHAR(255),\n学生申请时间 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 资助项目信息 WHERE 类型='国家级'"
+    },
+    {
+        "instruction": "<question>:统计各类型项目的数量\nCREATE TABLE 资助项目信息 (序号 VARCHAR(255),\n项目名称 VARCHAR(255),\n资助方 VARCHAR(255),\n类型 VARCHAR(255),\n资助标准 VARCHAR(255),\n资助年限 VARCHAR(255),\n资助年级 VARCHAR(255),\n评选条件 VARCHAR(255),\n学生申请方式及须提交的材料 VARCHAR(255),\n备注 VARCHAR(255),\n院系审批方式及需提交的汇总材料 VARCHAR(255),\n学生申请时间 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 类型, COUNT(*) FROM 资助项目信息 GROUP BY 类型"
+    },
+    {
+        "instruction": "<question>:查找评选条件包含\"优秀\"关键词的项目\nCREATE TABLE 资助项目信息 (序号 VARCHAR(255),\n项目名称 VARCHAR(255),\n资助方 VARCHAR(255),\n类型 VARCHAR(255),\n资助标准 VARCHAR(255),\n资助年限 VARCHAR(255),\n资助年级 VARCHAR(255),\n评选条件 VARCHAR(255),\n学生申请方式及须提交的材料 VARCHAR(255),\n备注 VARCHAR(255),\n院系审批方式及需提交的汇总材料 VARCHAR(255),\n学生申请时间 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 资助项目信息 WHERE 评选条件 LIKE '%优秀%'"
+    },
+    {
+        "instruction": "<question>:查找资助方为\"xxx\"的项目\nCREATE TABLE 资助项目信息 (序号 VARCHAR(255),\n项目名称 VARCHAR(255),\n资助方 VARCHAR(255),\n类型 VARCHAR(255),\n资助标准 VARCHAR(255),\n资助年限 VARCHAR(255),\n资助年级 VARCHAR(255),\n评选条件 VARCHAR(255),\n学生申请方式及须提交的材料 VARCHAR(255),\n备注 VARCHAR(255),\n院系审批方式及需提交的汇总材料 VARCHAR(255),\n学生申请时间 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 资助项目信息 WHERE 资助方='xxx'"
+    },
+    {
+        "instruction": "<question>:查询所有申报企业名称\nCREATE TABLE 企业申报信息表 (序号 FLOAT,\n省、区、中央企业 VARCHAR(255),\n申报企业名称 VARCHAR(255),\n企业性质 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 申报企业名称 FROM 企业申报信息表"
+    },
+    {
+        "instruction": "<question>:查询企业性质为国有企业的申报企业名称并按照序号排序\nCREATE TABLE 企业申报信息表 (序号 FLOAT,\n省、区、中央企业 VARCHAR(255),\n申报企业名称 VARCHAR(255),\n企业性质 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 申报企业名称 FROM 企业申报信息表 WHERE 企业性质='国有企业' ORDER BY 序号 ASC"
+    },
+    {
+        "instruction": "<question>:查询省为广东省的申报企业个数\nCREATE TABLE 企业申报信息表 (序号 FLOAT,\n省、区、中央企业 VARCHAR(255),\n申报企业名称 VARCHAR(255),\n企业性质 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(*) FROM 企业申报信息表 WHERE 省、区、中央企业='广东省'"
+    },
+    {
+        "instruction": "<question>:按照企业性质分组，统计每种企业性质的申报企业个数\nCREATE TABLE 企业申报信息表 (序号 FLOAT,\n省、区、中央企业 VARCHAR(255),\n申报企业名称 VARCHAR(255),\n企业性质 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 企业性质, COUNT(*) FROM 企业申报信息表 GROUP BY 企业性质"
+    },
+    {
+        "instruction": "<question>:查询申报企业名称中包含“科技”的企业个数\nCREATE TABLE 企业申报信息表 (序号 FLOAT,\n省、区、中央企业 VARCHAR(255),\n申报企业名称 VARCHAR(255),\n企业性质 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(*) FROM 企业申报信息表 WHERE 申报企业名称 LIKE '%科技%'"
+    },
+    {
+        "instruction": "<question>:1. 查询所有公告信息的证券代码、证券简称、公告日、内容\nCREATE TABLE 公告信息 (证券代码 VARCHAR(255),\n证券简称 VARCHAR(255),\n公告日 VARCHAR(255),\n内容 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 证券代码, 证券简称, 公告日, 内容 FROM 公告信息"
+    },
+    {
+        "instruction": "<question>:2. 按照公告日降序排列，查询最近发布的5条公告信息的证券代码、证券简称、公告日、内容\nCREATE TABLE 公告信息 (证券代码 VARCHAR(255),\n证券简称 VARCHAR(255),\n公告日 VARCHAR(255),\n内容 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 证券代码, 证券简称, 公告日, 内容 FROM 公告信息 ORDER BY 公告日 DESC LIMIT 5"
+    },
+    {
+        "instruction": "<question>:3. 按照证券简称分组，查询每个证券简称对应的公告信息数量，并按照数量从多到少排序\nCREATE TABLE 公告信息 (证券代码 VARCHAR(255),\n证券简称 VARCHAR(255),\n公告日 VARCHAR(255),\n内容 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 证券简称, COUNT(*) AS 公告信息数量 FROM 公告信息 GROUP BY 证券简称 ORDER BY 公告信息数量 DESC"
+    },
+    {
+        "instruction": "<question>:4. 查询所有含有“重大事项”的公告信息的证券代码、证券简称、公告日、内容\nCREATE TABLE 公告信息 (证券代码 VARCHAR(255),\n证券简称 VARCHAR(255),\n公告日 VARCHAR(255),\n内容 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 证券代码, 证券简称, 公告日, 内容 FROM 公告信息 WHERE 内容 LIKE '%重大事项%'"
+    },
+    {
+        "instruction": "<question>:输出计算值大于100的数据\nCREATE TABLE 数据表 (图形名称 VARCHAR(255),\n参数代号 VARCHAR(255),\n参数值 FLOAT,\n名称 VARCHAR(255),\n计算公式 VARCHAR(255),\n计算值 FLOAT,\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 数据表 WHERE 计算值>100;"
+    },
+    {
+        "instruction": "<question>:输出参数代号为'001'的数据\nCREATE TABLE 数据表 (图形名称 VARCHAR(255),\n参数代号 VARCHAR(255),\n参数值 FLOAT,\n名称 VARCHAR(255),\n计算公式 VARCHAR(255),\n计算值 FLOAT,\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 数据表 WHERE 参数代号='001';"
+    },
+    {
+        "instruction": "<question>:输出名称为'温度'的数据\nCREATE TABLE 数据表 (图形名称 VARCHAR(255),\n参数代号 VARCHAR(255),\n参数值 FLOAT,\n名称 VARCHAR(255),\n计算公式 VARCHAR(255),\n计算值 FLOAT,\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 数据表 WHERE 名称='温度';"
+    },
+    {
+        "instruction": "<question>:输出不同图形名称的数据数量\nCREATE TABLE 数据表 (图形名称 VARCHAR(255),\n参数代号 VARCHAR(255),\n参数值 FLOAT,\n名称 VARCHAR(255),\n计算公式 VARCHAR(255),\n计算值 FLOAT,\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 图形名称,COUNT(*) AS 数据数量 FROM 数据表 GROUP BY 图形名称;"
+    },
+    {
+        "instruction": "<question>:输出图形名称为'图形1'的最大参数值\nCREATE TABLE 数据表 (图形名称 VARCHAR(255),\n参数代号 VARCHAR(255),\n参数值 FLOAT,\n名称 VARCHAR(255),\n计算公式 VARCHAR(255),\n计算值 FLOAT,\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT MAX(参数值) FROM 数据表 WHERE 图形名称='图形1';"
+    },
+    {
+        "instruction": "<question>:请显示所有列和记录\nCREATE TABLE 药品信息表 (序号 FLOAT,\n药品名称 VARCHAR(255),\n规格 VARCHAR(255),\n包装规格 VARCHAR(255),\n单位 VARCHAR(255),\n药品生产企业 VARCHAR(255),\n零售价 FLOAT);",
+        "input": "",
+        "output": "SELECT * FROM 药品信息表"
+    },
+    {
+        "instruction": "<question>:请按药品价格从高到低排序并显示前10条记录\nCREATE TABLE 药品信息表 (序号 FLOAT,\n药品名称 VARCHAR(255),\n规格 VARCHAR(255),\n包装规格 VARCHAR(255),\n单位 VARCHAR(255),\n药品生产企业 VARCHAR(255),\n零售价 FLOAT);",
+        "input": "",
+        "output": "SELECT * FROM 药品信息表 ORDER BY 零售价 DESC LIMIT 10"
+    },
+    {
+        "instruction": "<question>:请选择价格大于5元的药品并按价格从高到低排序\nCREATE TABLE 药品信息表 (序号 FLOAT,\n药品名称 VARCHAR(255),\n规格 VARCHAR(255),\n包装规格 VARCHAR(255),\n单位 VARCHAR(255),\n药品生产企业 VARCHAR(255),\n零售价 FLOAT);",
+        "input": "",
+        "output": "SELECT * FROM 药品信息表 WHERE 零售价 > 5 ORDER BY 零售价 DESC"
+    },
+    {
+        "instruction": "<question>:查询所有时间中，客运量、营业收入、净利润的平均值？\nCREATE TABLE 客运量与收入数据 (时间 FLOAT,\n客运量 FLOAT,\n运量同比增长率 FLOAT,\n日均客流量 FLOAT,\n流量同比增长率 FLOAT,\n营业收入 FLOAT,\n收入同比增长率 FLOAT,\n净利润 FLOAT,\n净利润同比增长率 FLOAT);",
+        "input": "",
+        "output": "SELECT AVG(客运量), AVG(营业收入), AVG(净利润) FROM 客运量与收入数据"
+    },
+    {
+        "instruction": "<question>:查询流量同比增长率>15%的所有时间和其流量同比增长率？\nCREATE TABLE 客运量与收入数据 (时间 FLOAT,\n客运量 FLOAT,\n运量同比增长率 FLOAT,\n日均客流量 FLOAT,\n流量同比增长率 FLOAT,\n营业收入 FLOAT,\n收入同比增长率 FLOAT,\n净利润 FLOAT,\n净利润同比增长率 FLOAT);",
+        "input": "",
+        "output": "SELECT 时间, 流量同比增长率 FROM 客运量与收入数据 WHERE 流量同比增长率 > 15"
+    },
+    {
+        "instruction": "<question>:查询排名前3的公司名称和其合计份额数\nCREATE TABLE 船运公司份额 (排名 FLOAT,\n公司 VARCHAR(255),\n合计运力份额占比 FLOAT,\n合计份额数 FLOAT,\n自有船数 FLOAT,\n新船订单数 FLOAT,\n合计船数 FLOAT,\n平均船龄 FLOAT);",
+        "input": "",
+        "output": "SELECT DISTINCT 公司, 合计份额数 FROM 船运公司份额 ORDER BY 合计份额数 DESC LIMIT 3"
+    },
+    {
+        "instruction": "<question>:查询平均船龄大于等于10年的公司名称和其所拥有的自有船数\nCREATE TABLE 船运公司份额 (排名 FLOAT,\n公司 VARCHAR(255),\n合计运力份额占比 FLOAT,\n合计份额数 FLOAT,\n自有船数 FLOAT,\n新船订单数 FLOAT,\n合计船数 FLOAT,\n平均船龄 FLOAT);",
+        "input": "",
+        "output": "SELECT 公司, 自有船数 FROM 船运公司份额 WHERE 平均船龄 >= 10"
+    },
+    {
+        "instruction": "<question>:查询合计运力份额占比大于0.2的公司数量\nCREATE TABLE 船运公司份额 (排名 FLOAT,\n公司 VARCHAR(255),\n合计运力份额占比 FLOAT,\n合计份额数 FLOAT,\n自有船数 FLOAT,\n新船订单数 FLOAT,\n合计船数 FLOAT,\n平均船龄 FLOAT);",
+        "input": "",
+        "output": "SELECT COUNT(DISTINCT 公司) FROM 船运公司份额 WHERE 合计运力份额占比 > 0.2"
+    },
+    {
+        "instruction": "<question>:查询新船订单数排名第3到第5的公司名称和其新船订单数\nCREATE TABLE 船运公司份额 (排名 FLOAT,\n公司 VARCHAR(255),\n合计运力份额占比 FLOAT,\n合计份额数 FLOAT,\n自有船数 FLOAT,\n新船订单数 FLOAT,\n合计船数 FLOAT,\n平均船龄 FLOAT);",
+        "input": "",
+        "output": "SELECT 公司, 新船订单数 FROM 船运公司份额 ORDER BY 新船订单数 DESC LIMIT 3 OFFSET 2"
+    },
+    {
+        "instruction": "<question>:查询2017年平均收盘价在10元以上的证券数量\nCREATE TABLE 证券列表 (证券简称 VARCHAR(255),\n2013年 VARCHAR(255),\n2014年 VARCHAR(255),\n2015年 VARCHAR(255),\n2016年 VARCHAR(255),\n2017年 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(DISTINCT 证券简称) FROM 证券列表 WHERE 2017年 > 10 HAVING AVG(2017年) > 10"
+    },
+    {
+        "instruction": "<question>:查询2013年和2014年股票收盘价都大于5元的证券名称和收盘价\nCREATE TABLE 证券列表 (证券简称 VARCHAR(255),\n2013年 VARCHAR(255),\n2014年 VARCHAR(255),\n2015年 VARCHAR(255),\n2016年 VARCHAR(255),\n2017年 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT DISTINCT 证券简称, 2013年, 2014年 FROM 证券列表 WHERE 2013年 > 5 AND 2014年 > 5"
+    },
+    {
+        "instruction": "<question>:查询证券简称中包含“中信”的证券数量\nCREATE TABLE 证券列表 (证券简称 VARCHAR(255),\n2013年 VARCHAR(255),\n2014年 VARCHAR(255),\n2015年 VARCHAR(255),\n2016年 VARCHAR(255),\n2017年 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(DISTINCT 证券简称) FROM 证券列表 WHERE 证券简称 LIKE '%中信%'"
+    },
+    {
+        "instruction": "<question>:请列出所有作者为'张三'的图书信息，并按出版日期从早到晚排序。\nCREATE TABLE 图书信息 (书号 VARCHAR(255),\n价格 FLOAT,\n书名 VARCHAR(255),\n丛书名 VARCHAR(255),\n作者 VARCHAR(255),\n出版地 VARCHAR(255),\n出版社 VARCHAR(255),\n出版日期 FLOAT,\n印刷日期 FLOAT,\n页数 FLOAT,\n纸张规格 VARCHAR(255),\n开本 FLOAT,\n印张 FLOAT,\n字数 FLOAT,\n插页 FLOAT,\n简介 VARCHAR(255),\n读者对象 VARCHAR(255),\n分类 VARCHAR(255),\n分类名称 VARCHAR(255),\n主题词 VARCHAR(255),\n条码 FLOAT,\n册包 FLOAT);",
+        "input": "",
+        "output": "SELECT * FROM 图书信息 WHERE 作者='张三' ORDER BY 出版日期 ASC;"
+    },
+    {
+        "instruction": "<question>:请统计每个分类名称下的图书数量，并将结果按从多到少排序。\nCREATE TABLE 图书信息 (书号 VARCHAR(255),\n价格 FLOAT,\n书名 VARCHAR(255),\n丛书名 VARCHAR(255),\n作者 VARCHAR(255),\n出版地 VARCHAR(255),\n出版社 VARCHAR(255),\n出版日期 FLOAT,\n印刷日期 FLOAT,\n页数 FLOAT,\n纸张规格 VARCHAR(255),\n开本 FLOAT,\n印张 FLOAT,\n字数 FLOAT,\n插页 FLOAT,\n简介 VARCHAR(255),\n读者对象 VARCHAR(255),\n分类 VARCHAR(255),\n分类名称 VARCHAR(255),\n主题词 VARCHAR(255),\n条码 FLOAT,\n册包 FLOAT);",
+        "input": "",
+        "output": "SELECT 分类名称, COUNT(书号) AS 图书数量 FROM 图书信息 GROUP BY 分类名称 ORDER BY 图书数量 DESC;"
+    },
+    {
+        "instruction": "<question>:请列出所有有插页的图书信息，并按插页数从高到低排序。\nCREATE TABLE 图书信息 (书号 VARCHAR(255),\n价格 FLOAT,\n书名 VARCHAR(255),\n丛书名 VARCHAR(255),\n作者 VARCHAR(255),\n出版地 VARCHAR(255),\n出版社 VARCHAR(255),\n出版日期 FLOAT,\n印刷日期 FLOAT,\n页数 FLOAT,\n纸张规格 VARCHAR(255),\n开本 FLOAT,\n印张 FLOAT,\n字数 FLOAT,\n插页 FLOAT,\n简介 VARCHAR(255),\n读者对象 VARCHAR(255),\n分类 VARCHAR(255),\n分类名称 VARCHAR(255),\n主题词 VARCHAR(255),\n条码 FLOAT,\n册包 FLOAT);",
+        "input": "",
+        "output": "SELECT * FROM 图书信息 WHERE 插页>0 ORDER BY 插页 DESC;"
+    },
+    {
+        "instruction": "<question>:请列出所有出版日期在2010年之后的图书信息，并按作者及出版日期排序。\nCREATE TABLE 图书信息 (书号 VARCHAR(255),\n价格 FLOAT,\n书名 VARCHAR(255),\n丛书名 VARCHAR(255),\n作者 VARCHAR(255),\n出版地 VARCHAR(255),\n出版社 VARCHAR(255),\n出版日期 FLOAT,\n印刷日期 FLOAT,\n页数 FLOAT,\n纸张规格 VARCHAR(255),\n开本 FLOAT,\n印张 FLOAT,\n字数 FLOAT,\n插页 FLOAT,\n简介 VARCHAR(255),\n读者对象 VARCHAR(255),\n分类 VARCHAR(255),\n分类名称 VARCHAR(255),\n主题词 VARCHAR(255),\n条码 FLOAT,\n册包 FLOAT);",
+        "input": "",
+        "output": "SELECT * FROM 图书信息 WHERE 出版日期>=2010 ORDER BY 作者 ASC, 出版日期 ASC;"
+    },
+    {
+        "instruction": "<question>:1. 请输出所有城市为北京的酒店信息。\nCREATE TABLE 酒店信息 (序号 FLOAT,\n地区 VARCHAR(255),\n城市 VARCHAR(255),\n名称 VARCHAR(255),\n地址 VARCHAR(255),\n可预订时间段 VARCHAR(255),\n室内/外 VARCHAR(255),\n权益扣除个数 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 酒店信息 WHERE 城市='北京';"
+    },
+    {
+        "instruction": "<question>:3. 请统计每个城市有多少个酒店，并按照数量降序排列。\nCREATE TABLE 酒店信息 (序号 FLOAT,\n地区 VARCHAR(255),\n城市 VARCHAR(255),\n名称 VARCHAR(255),\n地址 VARCHAR(255),\n可预订时间段 VARCHAR(255),\n室内/外 VARCHAR(255),\n权益扣除个数 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 城市, COUNT(*) AS 酒店数量 FROM 酒店信息 GROUP BY 城市 ORDER BY 酒店数量 DESC;"
+    },
+    {
+        "instruction": "<question>:查询招聘计划数大于等于10的岗位的岗位名称和最低学历要求。\nCREATE TABLE 招聘岗位信息表 (岗位名称 VARCHAR(255),\n岗位代码 VARCHAR(255),\n招聘计划数 FLOAT,\n岗位类别 VARCHAR(255),\n年龄 VARCHAR(255),\n性别 VARCHAR(255),\n最低学历要求 VARCHAR(255),\n户籍要求 VARCHAR(255),\n专业要求 VARCHAR(255),\n其他要求 VARCHAR(255),\n聘用单位 VARCHAR(255),\n经费形式 VARCHAR(255),\n笔试内容 VARCHAR(255),\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 岗位名称, 最低学历要求 FROM 招聘岗位信息表 WHERE 招聘计划数 >= 10;"
+    },
+    {
+        "instruction": "<question>:查询岗位名称包含“工程师”的岗位数量。\nCREATE TABLE 招聘岗位信息表 (岗位名称 VARCHAR(255),\n岗位代码 VARCHAR(255),\n招聘计划数 FLOAT,\n岗位类别 VARCHAR(255),\n年龄 VARCHAR(255),\n性别 VARCHAR(255),\n最低学历要求 VARCHAR(255),\n户籍要求 VARCHAR(255),\n专业要求 VARCHAR(255),\n其他要求 VARCHAR(255),\n聘用单位 VARCHAR(255),\n经费形式 VARCHAR(255),\n笔试内容 VARCHAR(255),\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(*) FROM 招聘岗位信息表 WHERE 岗位名称 LIKE '%工程师%';"
+    },
+    {
+        "instruction": "<question>:检测机构名称为“xxx”的样品有多少个？\nCREATE TABLE 检测数据 (序号 FLOAT,\n样品编号 FLOAT,\n检测机构名称 VARCHAR(255),\n被抽样单位名称 VARCHAR(255),\n被抽样单位地址 VARCHAR(255),\n抽样编号 VARCHAR(255),\n样品名称 VARCHAR(255),\n检测项目 VARCHAR(255),\n检测结果 VARCHAR(255),\n结果单位 VARCHAR(255),\n结果判定 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT count(*) FROM 检测数据 WHERE 检测机构名称='xxx';"
+    },
+    {
+        "instruction": "<question>:按照检测项目分别统计各个结果判定的数量，结果判定为“不合格”的排在前面，只显示前10个结果\nCREATE TABLE 检测数据 (序号 FLOAT,\n样品编号 FLOAT,\n检测机构名称 VARCHAR(255),\n被抽样单位名称 VARCHAR(255),\n被抽样单位地址 VARCHAR(255),\n抽样编号 VARCHAR(255),\n样品名称 VARCHAR(255),\n检测项目 VARCHAR(255),\n检测结果 VARCHAR(255),\n结果单位 VARCHAR(255),\n结果判定 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 检测项目, 结果判定, count(*) FROM 检测数据 GROUP BY 检测项目, 结果判定 HAVING 结果判定 = '不合格' ORDER BY count(*) DESC LIMIT 10;"
+    },
+    {
+        "instruction": "<question>:按照被抽样单位地址中含有“xx市”的样品数量从大到小排序，只显示前5个结果\nCREATE TABLE 检测数据 (序号 FLOAT,\n样品编号 FLOAT,\n检测机构名称 VARCHAR(255),\n被抽样单位名称 VARCHAR(255),\n被抽样单位地址 VARCHAR(255),\n抽样编号 VARCHAR(255),\n样品名称 VARCHAR(255),\n检测项目 VARCHAR(255),\n检测结果 VARCHAR(255),\n结果单位 VARCHAR(255),\n结果判定 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT count(*) FROM 检测数据 WHERE 被抽样单位地址 like '%xx市%';"
+    },
+    {
+        "instruction": "<question>:查询出版社为XXX的教材的编号和名称\nCREATE TABLE 教材信息 (序号 FLOAT,\n书号 VARCHAR(255),\n教材名称 VARCHAR(255),\n主编 VARCHAR(255),\n出版社 VARCHAR(255),\n出版日期 FLOAT);",
+        "input": "",
+        "output": "SELECT 书号,教材名称 FROM 教材信息 WHERE 出版社 = 'XXX'"
+    },
+    {
+        "instruction": "<question>:统计每个出版社发行的教材数量，并按数量从多到少排序\nCREATE TABLE 教材信息 (序号 FLOAT,\n书号 VARCHAR(255),\n教材名称 VARCHAR(255),\n主编 VARCHAR(255),\n出版社 VARCHAR(255),\n出版日期 FLOAT);",
+        "input": "",
+        "output": "SELECT 出版社, COUNT(*) AS 教材数量 FROM 教材信息 GROUP BY 出版社 ORDER BY 教材数量 DESC"
+    },
+    {
+        "instruction": "<question>:查询教材名称中包含“XXX”关键字的教材的编号和名称\nCREATE TABLE 教材信息 (序号 FLOAT,\n书号 VARCHAR(255),\n教材名称 VARCHAR(255),\n主编 VARCHAR(255),\n出版社 VARCHAR(255),\n出版日期 FLOAT);",
+        "input": "",
+        "output": "SELECT 书号,教材名称 FROM 教材信息 WHERE 教材名称 LIKE '%XXX%'"
+    },
+    {
+        "instruction": "<question>:查询公司名称中包含“科技”的公司名称和2012年销售额\nCREATE TABLE 销售统计表 (公司名称 VARCHAR(255),\n2012年销售额 FLOAT,\n2011年上半年销售额 FLOAT,\n2011年上半年销售额同比 FLOAT,\n预计全年销售额 FLOAT,\n2012年下半年销售预测 FLOAT,\n2011年下半年销售额 FLOAT,\n2012年下半年销售额同比 FLOAT,\n推盘去化率 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 公司名称, 2012年销售额 FROM 销售统计表 WHERE 公司名称 LIKE '%科技%'"
+    },
+    {
+        "instruction": "<question>:2. 统计每个岗位类别的平均招聘人数。\nCREATE TABLE 招聘信息表 (序号 FLOAT,\n岗位名称 VARCHAR(255),\n所属专业 VARCHAR(255),\n学历要求 VARCHAR(255),\n招聘人数 FLOAT,\n岗位类别 VARCHAR(255),\n等级 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 岗位类别, AVG(招聘人数) AS 平均招聘人数 FROM 招聘信息表 GROUP BY 岗位类别;"
+    },
+    {
+        "instruction": "<question>:4. 按照招聘人数降序排列，输出岗位名称、招聘人数和岗位类别信息。\nCREATE TABLE 招聘信息表 (序号 FLOAT,\n岗位名称 VARCHAR(255),\n所属专业 VARCHAR(255),\n学历要求 VARCHAR(255),\n招聘人数 FLOAT,\n岗位类别 VARCHAR(255),\n等级 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 岗位名称, 招聘人数, 岗位类别 FROM 招聘信息表 ORDER BY 招聘人数 DESC;"
+    },
+    {
+        "instruction": "<question>:2. 查询检测结果表中抽查结果为合格的记录总数。\nCREATE TABLE 检验结果表 (序号 FLOAT,\n受检企业名称 VARCHAR(255),\n生产企业名称 VARCHAR(255),\n生产企业所在地 VARCHAR(255),\n产品名称 VARCHAR(255),\n规格型号 VARCHAR(255),\n生产日期/批号 VARCHAR(255),\n抽查结果 VARCHAR(255),\n承检机构 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(*) FROM 检验结果表 WHERE 抽查结果='合格';"
+    },
+    {
+        "instruction": "<question>:3. 查询检测结果表中生产企业名称为ABC的记录数量。\nCREATE TABLE 检验结果表 (序号 FLOAT,\n受检企业名称 VARCHAR(255),\n生产企业名称 VARCHAR(255),\n生产企业所在地 VARCHAR(255),\n产品名称 VARCHAR(255),\n规格型号 VARCHAR(255),\n生产日期/批号 VARCHAR(255),\n抽查结果 VARCHAR(255),\n承检机构 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(*) FROM 检验结果表 WHERE 生产企业名称='ABC';"
+    },
+    {
+        "instruction": "<question>:4. 查询检测结果表中抽查结果为不合格且承检机构为XYZ的记录。\nCREATE TABLE 检验结果表 (序号 FLOAT,\n受检企业名称 VARCHAR(255),\n生产企业名称 VARCHAR(255),\n生产企业所在地 VARCHAR(255),\n产品名称 VARCHAR(255),\n规格型号 VARCHAR(255),\n生产日期/批号 VARCHAR(255),\n抽查结果 VARCHAR(255),\n承检机构 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 检验结果表 WHERE 抽查结果='不合格' AND 承检机构='XYZ';"
+    },
+    {
+        "instruction": "<question>:6. 查询检测结果表中每个受检企业的抽查结果为合格的数量，并按数量降序排列。\nCREATE TABLE 检验结果表 (序号 FLOAT,\n受检企业名称 VARCHAR(255),\n生产企业名称 VARCHAR(255),\n生产企业所在地 VARCHAR(255),\n产品名称 VARCHAR(255),\n规格型号 VARCHAR(255),\n生产日期/批号 VARCHAR(255),\n抽查结果 VARCHAR(255),\n承检机构 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 受检企业名称, COUNT(*) AS num_of_pass_results FROM 检验结果表 WHERE 抽查结果='合格' GROUP BY 受检企业名称 ORDER BY num_of_pass_results DESC;"
+    },
+    {
+        "instruction": "<question>:7. 查询检测结果表中产品名称中包含“面膜”的记录数量。\nCREATE TABLE 检验结果表 (序号 FLOAT,\n受检企业名称 VARCHAR(255),\n生产企业名称 VARCHAR(255),\n生产企业所在地 VARCHAR(255),\n产品名称 VARCHAR(255),\n规格型号 VARCHAR(255),\n生产日期/批号 VARCHAR(255),\n抽查结果 VARCHAR(255),\n承检机构 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(*) FROM 检验结果表 WHERE 产品名称 LIKE '%面膜%';"
+    },
+    {
+        "instruction": "<question>:\nCREATE TABLE 招生计划表 (专业名称 VARCHAR(255),\n学制 FLOAT,\n层次 VARCHAR(255),\n科类 VARCHAR(255),\n计划 FLOAT,\n山东 FLOAT,\n收费标准 FLOAT,\n就读地点 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 招生计划表 WHERE 专业名称='计算机科学与技术' AND 层次='本科' AND 科类='理科';"
+    },
+    {
+        "instruction": "<question>:\nCREATE TABLE 招生计划表 (专业名称 VARCHAR(255),\n学制 FLOAT,\n层次 VARCHAR(255),\n科类 VARCHAR(255),\n计划 FLOAT,\n山东 FLOAT,\n收费标准 FLOAT,\n就读地点 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 就读地点, SUM(计划) AS 计划人数总和 FROM 招生计划表 GROUP BY 就读地点;"
+    },
+    {
+        "instruction": "<question>:\nCREATE TABLE 招生计划表 (专业名称 VARCHAR(255),\n学制 FLOAT,\n层次 VARCHAR(255),\n科类 VARCHAR(255),\n计划 FLOAT,\n山东 FLOAT,\n收费标准 FLOAT,\n就读地点 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 招生计划表 WHERE 计划 > 100 ORDER BY 计划 DESC;"
+    },
+    {
+        "instruction": "<question>:查询该数据表中类别为“言情”的电视剧数量\nCREATE TABLE 电视剧信息表 (序号 FLOAT,\n剧名 VARCHAR(255),\n引进单位 VARCHAR(255),\n类别 VARCHAR(255),\n集数 FLOAT,\n许可证编号 VARCHAR(255),\n发证日期 FLOAT,\n版权期限 FLOAT);",
+        "input": "",
+        "output": "SELECT COUNT(*) FROM 电视剧信息表 WHERE 类别='言情';"
+    },
+    {
+        "instruction": "<question>:查询该数据表中剧名中包含“少年”的电视剧信息\nCREATE TABLE 电视剧信息表 (序号 FLOAT,\n剧名 VARCHAR(255),\n引进单位 VARCHAR(255),\n类别 VARCHAR(255),\n集数 FLOAT,\n许可证编号 VARCHAR(255),\n发证日期 FLOAT,\n版权期限 FLOAT);",
+        "input": "",
+        "output": "SELECT * FROM 电视剧信息表 WHERE 剧名 LIKE '%少年%';"
+    },
+    {
+        "instruction": "<question>:查询该数据表中引进单位非空的电视剧信息，并按照许可证编号升序排列，取前10条数据\nCREATE TABLE 电视剧信息表 (序号 FLOAT,\n剧名 VARCHAR(255),\n引进单位 VARCHAR(255),\n类别 VARCHAR(255),\n集数 FLOAT,\n许可证编号 VARCHAR(255),\n发证日期 FLOAT,\n版权期限 FLOAT);",
+        "input": "",
+        "output": "SELECT * FROM 电视剧信息表 WHERE 引进单位 IS NOT NULL ORDER BY 许可证编号 ASC LIMIT 10;"
+    },
+    {
+        "instruction": "<question>:查询品种特性中包含'抗病'的品种\nCREATE TABLE 品种信息 (序号 FLOAT,\n品种名称 VARCHAR(255),\n品种特性 VARCHAR(255),\n适宜种植范围 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 品种信息 WHERE 品种特性 LIKE '%抗病%';"
+    },
+    {
+        "instruction": "<question>:查询适宜种植范围为'南方'的品种名称，并按序号升序排列\nCREATE TABLE 品种信息 (序号 FLOAT,\n品种名称 VARCHAR(255),\n品种特性 VARCHAR(255),\n适宜种植范围 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 品种名称 FROM 品种信息 WHERE 适宜种植范围 = '南方' ORDER BY 序号 ASC;"
+    },
+    {
+        "instruction": "<question>:查询品种特性以'提高产量'开头的品种数量\nCREATE TABLE 品种信息 (序号 FLOAT,\n品种名称 VARCHAR(255),\n品种特性 VARCHAR(255),\n适宜种植范围 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(*) FROM 品种信息 WHERE 品种特性 LIKE '提高产量%';"
+    },
+    {
+        "instruction": "<question>:查询品种名称中以'水果'结尾的品种数量\nCREATE TABLE 品种信息 (序号 FLOAT,\n品种名称 VARCHAR(255),\n品种特性 VARCHAR(255),\n适宜种植范围 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(*) FROM 品种信息 WHERE 品种名称 LIKE '%水果';"
+    },
+    {
+        "instruction": "<question>:查询观影人次最高的电影院线名称和观影人次\nCREATE TABLE 院线电影周票房数据 (院线名称 VARCHAR(255),\n周票房 FLOAT,\n观影人次 FLOAT,\n平均票价 FLOAT);",
+        "input": "",
+        "output": "SELECT 院线名称, MAX(观影人次) AS max_number FROM 院线电影周票房数据 GROUP BY 院线名称 ORDER BY max_number DESC LIMIT 1;"
+    },
+    {
+        "instruction": "<question>:查询平均票价低于50元的电影院线名称和平均票价，按平均票价升序排序\nCREATE TABLE 院线电影周票房数据 (院线名称 VARCHAR(255),\n周票房 FLOAT,\n观影人次 FLOAT,\n平均票价 FLOAT);",
+        "input": "",
+        "output": "SELECT 院线名称, 平均票价 FROM 院线电影周票房数据 WHERE 平均票价 < 50 ORDER BY 平均票价 ASC;"
+    },
+    {
+        "instruction": "<question>:查询单位名称中包含“公司”的数据\nCREATE TABLE 表名 (序号 FLOAT,\n单位名称 VARCHAR(255),\n所辖区 VARCHAR(255),\n类型 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT DISTINCT 单位名称 FROM 表名 WHERE 单位名称 LIKE '%公司%';"
+    },
+    {
+        "instruction": "<question>:查询类型为“A类”的数据\nCREATE TABLE 表名 (序号 FLOAT,\n单位名称 VARCHAR(255),\n所辖区 VARCHAR(255),\n类型 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 表名 WHERE 类型='A类';"
+    },
+    {
+        "instruction": "<question>:查询所辖区为“区A”且类型为“B类”的数据\nCREATE TABLE 表名 (序号 FLOAT,\n单位名称 VARCHAR(255),\n所辖区 VARCHAR(255),\n类型 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 表名 WHERE 所辖区='区A' AND 类型='B类';"
+    },
+    {
+        "instruction": "<question>:查询所辖区不包含“区B”的数据\nCREATE TABLE 表名 (序号 FLOAT,\n单位名称 VARCHAR(255),\n所辖区 VARCHAR(255),\n类型 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 表名 WHERE 所辖区 NOT LIKE '%区B%';"
+    },
+    {
+        "instruction": "<question>:查询所有样品中规格型号为XX的数量\nCREATE TABLE 药品抽检检验结果 (序号 FLOAT,\n生产企业名称 VARCHAR(255),\n生产企业地址 VARCHAR(255),\n被抽单位名称 VARCHAR(255),\n被抽单位所在省份 VARCHAR(255),\n样品名称 VARCHAR(255),\n规格型号 VARCHAR(255),\n生产日期/批号 FLOAT);",
+        "input": "",
+        "output": "SELECT COUNT(*) FROM 药品抽检检验结果 WHERE 规格型号='XX';"
+    },
+    {
+        "instruction": "<question>:查询所有物种名称\nCREATE TABLE 物种保护信息表 (序号 FLOAT,\n物种名称 VARCHAR(255),\n保护级别 VARCHAR(255),\n栖息地名称 VARCHAR(255),\n地理坐标 VARCHAR(255),\n总面积 FLOAT,\n现有保护形式 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT DISTINCT 物种名称 FROM 物种保护信息表"
+    },
+    {
+        "instruction": "<question>:查询栖息地名称为'湖泊'的物种保护信息\nCREATE TABLE 物种保护信息表 (序号 FLOAT,\n物种名称 VARCHAR(255),\n保护级别 VARCHAR(255),\n栖息地名称 VARCHAR(255),\n地理坐标 VARCHAR(255),\n总面积 FLOAT,\n现有保护形式 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 物种保护信息表 WHERE 栖息地名称 LIKE '%湖泊%'"
+    },
+    {
+        "instruction": "<question>:查询现有保护形式为'自然保护区'或'野生动物自然保护区'的物种保护信息，并且按照总面积从大到小排序\nCREATE TABLE 物种保护信息表 (序号 FLOAT,\n物种名称 VARCHAR(255),\n保护级别 VARCHAR(255),\n栖息地名称 VARCHAR(255),\n地理坐标 VARCHAR(255),\n总面积 FLOAT,\n现有保护形式 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 物种保护信息表 WHERE 现有保护形式 IN ('自然保护区', '野生动物自然保护区') ORDER BY 总面积 DESC"
+    },
+    {
+        "instruction": "<question>:查询平均计划招聘人数\nCREATE TABLE 岗位信息表 (岗位代码 FLOAT,\n主管部门 VARCHAR(255),\n用人单位 VARCHAR(255),\n岗位 VARCHAR(255),\n计划招聘数 FLOAT,\n学历 VARCHAR(255),\n年龄 VARCHAR(255),\n籍贯 VARCHAR(255),\n专业要求 VARCHAR(255),\n考试科目 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT AVG(计划招聘数) FROM 岗位信息表"
+    },
+    {
+        "instruction": "<question>:查询每个主管部门的计划招聘人数总和，并按照总和从高到底排序\nCREATE TABLE 岗位信息表 (岗位代码 FLOAT,\n主管部门 VARCHAR(255),\n用人单位 VARCHAR(255),\n岗位 VARCHAR(255),\n计划招聘数 FLOAT,\n学历 VARCHAR(255),\n年龄 VARCHAR(255),\n籍贯 VARCHAR(255),\n专业要求 VARCHAR(255),\n考试科目 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 主管部门, SUM(计划招聘数) AS total_recruitment FROM 岗位信息表 GROUP BY 主管部门 ORDER BY total_recruitment DESC"
+    },
+    {
+        "instruction": "<question>:查询籍贯为北京的岗位数量\nCREATE TABLE 岗位信息表 (岗位代码 FLOAT,\n主管部门 VARCHAR(255),\n用人单位 VARCHAR(255),\n岗位 VARCHAR(255),\n计划招聘数 FLOAT,\n学历 VARCHAR(255),\n年龄 VARCHAR(255),\n籍贯 VARCHAR(255),\n专业要求 VARCHAR(255),\n考试科目 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(*) FROM 岗位信息表 WHERE 籍贯='北京'"
+    },
+    {
+        "instruction": "<question>:查询排名在100以后的中国大学的数量\nCREATE TABLE 世界大学排名 (排名 FLOAT,\n大学名称 VARCHAR(255),\n大学中文名称 VARCHAR(255),\n所在国家 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(*) FROM 世界大学排名 WHERE 所在国家 = 'China' AND 排名 > 100;"
+    },
+    {
+        "instruction": "<question>:查询需求人数大于等于10人的岗位有哪些？\nCREATE TABLE 招聘信息 (编号 FLOAT,\n岗位名称 VARCHAR(255),\n性别要求 VARCHAR(255),\n需求人数 FLOAT,\n考试类别 VARCHAR(255),\n学历要求 VARCHAR(255),\n年龄要求 VARCHAR(255),\n专业或岗位要求 VARCHAR(255),\n其他 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 招聘信息 WHERE 需求人数 >= 10;"
+    },
+    {
+        "instruction": "<question>:查询学历要求为本科及以上的招聘信息并按需求人数降序排列？\nCREATE TABLE 招聘信息 (编号 FLOAT,\n岗位名称 VARCHAR(255),\n性别要求 VARCHAR(255),\n需求人数 FLOAT,\n考试类别 VARCHAR(255),\n学历要求 VARCHAR(255),\n年龄要求 VARCHAR(255),\n专业或岗位要求 VARCHAR(255),\n其他 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 招聘信息 WHERE 学历要求 LIKE '%本科%' ORDER BY 需求人数 DESC;"
+    },
+    {
+        "instruction": "<question>:查询专业或岗位要求中包含“Java”的招聘信息有哪些？\nCREATE TABLE 招聘信息 (编号 FLOAT,\n岗位名称 VARCHAR(255),\n性别要求 VARCHAR(255),\n需求人数 FLOAT,\n考试类别 VARCHAR(255),\n学历要求 VARCHAR(255),\n年龄要求 VARCHAR(255),\n专业或岗位要求 VARCHAR(255),\n其他 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 招聘信息 WHERE 专业或岗位要求 LIKE '%Java%';"
+    },
+    {
+        "instruction": "<question>:按考试类别分类，分别统计每种考试类别的需求人数总和？\nCREATE TABLE 招聘信息 (编号 FLOAT,\n岗位名称 VARCHAR(255),\n性别要求 VARCHAR(255),\n需求人数 FLOAT,\n考试类别 VARCHAR(255),\n学历要求 VARCHAR(255),\n年龄要求 VARCHAR(255),\n专业或岗位要求 VARCHAR(255),\n其他 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 考试类别, SUM(需求人数) FROM 招聘信息 GROUP BY 考试类别;"
+    },
+    {
+        "instruction": "<question>:查询电影票房表中排名前10的电影名称和票房\nCREATE TABLE 电影票房表 (排名 VARCHAR(255),\n名称 VARCHAR(255),\n场次 VARCHAR(255),\n人次 VARCHAR(255),\n票房 VARCHAR(255),\n票房占比 FLOAT);",
+        "input": "",
+        "output": "SELECT 名称, 票房 FROM 电影票房表 ORDER BY 排名 LIMIT 10"
+    },
+    {
+        "instruction": "<question>:查询电影票房表中场次大于3000场的电影名称和场次\nCREATE TABLE 电影票房表 (排名 VARCHAR(255),\n名称 VARCHAR(255),\n场次 VARCHAR(255),\n人次 VARCHAR(255),\n票房 VARCHAR(255),\n票房占比 FLOAT);",
+        "input": "",
+        "output": "SELECT 名称, 场次 FROM 电影票房表 WHERE CAST(场次 AS INTEGER) > 3000"
+    },
+    {
+        "instruction": "<question>:查询电影票房表中票房在2000万元以上并且排名前20的电影名称和票房，按票房降序排列\nCREATE TABLE 电影票房表 (排名 VARCHAR(255),\n名称 VARCHAR(255),\n场次 VARCHAR(255),\n人次 VARCHAR(255),\n票房 VARCHAR(255),\n票房占比 FLOAT);",
+        "input": "",
+        "output": "SELECT 名称, 票房 FROM 电影票房表 WHERE CAST(票房 AS INTEGER) > 20000000 ORDER BY 排名 LIMIT 20"
+    },
+    {
+        "instruction": "<question>:查询所有城市的周均成交同比\nCREATE TABLE 城市周成交情况 (城市 VARCHAR(255),\n本周成交 FLOAT,\n本周成交环比 FLOAT,\n2011年周均成交 FLOAT,\n2012年周均成交 FLOAT,\n周均成交同比 FLOAT,\n消化时间 VARCHAR(255),\n消化时间环比 VARCHAR(255),\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 城市,周均成交同比 FROM 城市周成交情况"
+    },
+    {
+        "instruction": "<question>:查询本周成交最多的城市\nCREATE TABLE 城市周成交情况 (城市 VARCHAR(255),\n本周成交 FLOAT,\n本周成交环比 FLOAT,\n2011年周均成交 FLOAT,\n2012年周均成交 FLOAT,\n周均成交同比 FLOAT,\n消化时间 VARCHAR(255),\n消化时间环比 VARCHAR(255),\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 城市 FROM 城市周成交情况 ORDER BY 本周成交 DESC LIMIT 1"
+    },
+    {
+        "instruction": "<question>:查询本周成交环比大于10%的城市\nCREATE TABLE 城市周成交情况 (城市 VARCHAR(255),\n本周成交 FLOAT,\n本周成交环比 FLOAT,\n2011年周均成交 FLOAT,\n2012年周均成交 FLOAT,\n周均成交同比 FLOAT,\n消化时间 VARCHAR(255),\n消化时间环比 VARCHAR(255),\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 城市 FROM 城市周成交情况 WHERE 本周成交环比 > 0.1"
+    },
+    {
+        "instruction": "<question>:查询备注中包含“火爆”的城市\nCREATE TABLE 城市周成交情况 (城市 VARCHAR(255),\n本周成交 FLOAT,\n本周成交环比 FLOAT,\n2011年周均成交 FLOAT,\n2012年周均成交 FLOAT,\n周均成交同比 FLOAT,\n消化时间 VARCHAR(255),\n消化时间环比 VARCHAR(255),\n备注 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 城市 FROM 城市周成交情况 WHERE 备注 LIKE '%火爆%'"
+    },
+    {
+        "instruction": "<question>:按省份分组统计每个省份下有多少个项目名称？\nCREATE TABLE 投资信息表 (省份 VARCHAR(255),\n项目类别 VARCHAR(255),\n项目名称 VARCHAR(255),\n投资年份 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 省份, COUNT(项目名称) AS 项目数 FROM 投资信息表 GROUP BY 省份;"
+    },
+    {
+        "instruction": "<question>:查找投资年份为2019年的投资项目名称和所在省份，按省份和项目名称升序排序。\nCREATE TABLE 投资信息表 (省份 VARCHAR(255),\n项目类别 VARCHAR(255),\n项目名称 VARCHAR(255),\n投资年份 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 投资信息表.项目名称, 投资信息表.省份 FROM 投资信息表 WHERE 投资年份 = '2019年' ORDER BY 省份 ASC, 项目名称 ASC;"
+    },
+    {
+        "instruction": "<question>:查找项目类别为房地产且项目名称中包含“万科”的记录。\nCREATE TABLE 投资信息表 (省份 VARCHAR(255),\n项目类别 VARCHAR(255),\n项目名称 VARCHAR(255),\n投资年份 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT * FROM 投资信息表 WHERE 项目类别 = '房地产' AND 项目名称 LIKE '%万科%';"
+    },
+    {
+        "instruction": "<question>:查询商户活动数量\nCREATE TABLE 商户活动信息 (序号 FLOAT,\n商户名称 VARCHAR(255),\n商户地址 VARCHAR(255),\n活动内容 VARCHAR(255),\n电话 VARCHAR(255),\n活动时间 VARCHAR(255),\n区域 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(*) FROM 商户活动信息"
+    },
+    {
+        "instruction": "<question>:查询商户活动数量前10的商家\nCREATE TABLE 商户活动信息 (序号 FLOAT,\n商户名称 VARCHAR(255),\n商户地址 VARCHAR(255),\n活动内容 VARCHAR(255),\n电话 VARCHAR(255),\n活动时间 VARCHAR(255),\n区域 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 商户名称, COUNT(*) AS 活动数量 FROM 商户活动信息 GROUP BY 商户名称 ORDER BY 活动数量 DESC LIMIT 10"
+    },
+    {
+        "instruction": "<question>:查询每个区域的商家数量\nCREATE TABLE 商户活动信息 (序号 FLOAT,\n商户名称 VARCHAR(255),\n商户地址 VARCHAR(255),\n活动内容 VARCHAR(255),\n电话 VARCHAR(255),\n活动时间 VARCHAR(255),\n区域 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 区域, COUNT(DISTINCT 商户名称) AS 商家数量 FROM 商户活动信息 GROUP BY 区域"
+    },
+    {
+        "instruction": "<question>:查询电话号码最长的3家店铺\nCREATE TABLE 商户活动信息 (序号 FLOAT,\n商户名称 VARCHAR(255),\n商户地址 VARCHAR(255),\n活动内容 VARCHAR(255),\n电话 VARCHAR(255),\n活动时间 VARCHAR(255),\n区域 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 商户名称, 电话 FROM 商户活动信息 ORDER BY LENGTH(电话) DESC LIMIT 3"
+    },
+    {
+        "instruction": "<question>:统计招聘信息表中招聘岗位为'数据分析师'的记录数。\nCREATE TABLE 招聘信息 (招聘岗位 VARCHAR(255),\n招聘地区 VARCHAR(255),\n年龄要求 VARCHAR(255),\n学历要求 VARCHAR(255),\n从业经历 VARCHAR(255),\n基本要求 VARCHAR(255),\n户口要求 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(*) FROM 招聘信息 WHERE 招聘岗位='数据分析师'"
+    },
+    {
+        "instruction": "<question>:统计招聘信息表中招聘地区为'北京'且学历要求为'本科'的记录数。\nCREATE TABLE 招聘信息 (招聘岗位 VARCHAR(255),\n招聘地区 VARCHAR(255),\n年龄要求 VARCHAR(255),\n学历要求 VARCHAR(255),\n从业经历 VARCHAR(255),\n基本要求 VARCHAR(255),\n户口要求 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(*) FROM 招聘信息 WHERE 招聘地区='北京' AND 学历要求='本科'"
+    },
+    {
+        "instruction": "<question>:按年龄要求从小到大排序，统计不同年龄要求所对应的记录数。\nCREATE TABLE 招聘信息 (招聘岗位 VARCHAR(255),\n招聘地区 VARCHAR(255),\n年龄要求 VARCHAR(255),\n学历要求 VARCHAR(255),\n从业经历 VARCHAR(255),\n基本要求 VARCHAR(255),\n户口要求 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 年龄要求,COUNT(*) FROM 招聘信息 GROUP BY 年龄要求 ORDER BY 年龄要求 ASC"
+    },
+    {
+        "instruction": "<question>:统计招聘信息表中基本要求中含有'英语'关键词的记录数。\nCREATE TABLE 招聘信息 (招聘岗位 VARCHAR(255),\n招聘地区 VARCHAR(255),\n年龄要求 VARCHAR(255),\n学历要求 VARCHAR(255),\n从业经历 VARCHAR(255),\n基本要求 VARCHAR(255),\n户口要求 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT COUNT(*) FROM 招聘信息 WHERE 基本要求 LIKE '%英语%'"
+    },
+    {
+        "instruction": "<question>:按招聘地区分组，统计每个地区的记录数，并按记录数从大到小排序。\nCREATE TABLE 招聘信息 (招聘岗位 VARCHAR(255),\n招聘地区 VARCHAR(255),\n年龄要求 VARCHAR(255),\n学历要求 VARCHAR(255),\n从业经历 VARCHAR(255),\n基本要求 VARCHAR(255),\n户口要求 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 招聘地区,COUNT(*) FROM 招聘信息 GROUP BY 招聘地区 ORDER BY COUNT(*) DESC"
+    },
+    {
+        "instruction": "<question>:查询作者为张三的著作名称\nCREATE TABLE 著作信息表 (序号 FLOAT,\n著作名称 VARCHAR(255),\n作者 VARCHAR(255),\n工作单位 VARCHAR(255),\n愿否在指定出版社出版 VARCHAR(255),\n推荐单位 VARCHAR(255),\n资助类别 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 著作名称 FROM 著作信息表 WHERE 作者 = '张三';"
+    },
+    {
+        "instruction": "<question>:获取工作单位不为空的所有作者\nCREATE TABLE 著作信息表 (序号 FLOAT,\n著作名称 VARCHAR(255),\n作者 VARCHAR(255),\n工作单位 VARCHAR(255),\n愿否在指定出版社出版 VARCHAR(255),\n推荐单位 VARCHAR(255),\n资助类别 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT DISTINCT 作者 FROM 著作信息表 WHERE 工作单位 IS NOT NULL;"
+    },
+    {
+        "instruction": "<question>:获取推荐单位为A的作者数量，按数量从多到少排序\nCREATE TABLE 著作信息表 (序号 FLOAT,\n著作名称 VARCHAR(255),\n作者 VARCHAR(255),\n工作单位 VARCHAR(255),\n愿否在指定出版社出版 VARCHAR(255),\n推荐单位 VARCHAR(255),\n资助类别 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 作者, COUNT(*) AS 作者_count FROM 著作信息表 WHERE 推荐单位 = 'A' GROUP BY 作者 ORDER BY 作者_count DESC;"
+    },
+    {
+        "instruction": "<question>:查询著作名称中包含“数据分析”的著作\nCREATE TABLE 著作信息表 (序号 FLOAT,\n著作名称 VARCHAR(255),\n作者 VARCHAR(255),\n工作单位 VARCHAR(255),\n愿否在指定出版社出版 VARCHAR(255),\n推荐单位 VARCHAR(255),\n资助类别 VARCHAR(255));",
+        "input": "",
+        "output": "SELECT 著作名称 FROM 著作信息表 WHERE 著作名称 LIKE '%数据分析%';"
+    }
+]

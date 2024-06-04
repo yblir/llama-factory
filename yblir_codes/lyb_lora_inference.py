@@ -35,6 +35,8 @@ if __name__ == '__main__':
         print("Assistant: ", end="", flush=True)
 
         response = ""
+        res=chat_model.chat(messages)
+        print(res)
         for new_text in chat_model.stream_chat(messages):
             print(new_text, end="", flush=True)
             response += new_text
