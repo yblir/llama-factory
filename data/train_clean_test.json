@@ -1,7 +1,7 @@
 [
-    {
-        "instruction": "<question>:查询所有考试信息. CREATE TABLE 考试信息表 (日期 FLOAT,考试时间 VARCHAR(255),学院 VARCHAR(255),课程 VARCHAR(255),考试班级 FLOAT,班级人数 FLOAT,考试地点 VARCHAR(255));",
+  {
+        "instruction": "<question>:按照同比升序排序，输出城市名、同比、近7日日均成交环比，其中同比大于1，近7日日均成交环比小于1\nCREATE TABLE 城市成交情况 (城市名 VARCHAR(255),\n日成交 FLOAT,\n前一日成交 FLOAT,\n环比 FLOAT,\n近7日日均成交 FLOAT,\n近7日日均成交环比 FLOAT,\n去年同期28日均成交 FLOAT,\n同比 FLOAT);",
         "input": "",
-        "output": "SELECT * FROM 考试信息表"
+        "output": "SELECT 城市名, 同比, 近7日日均成交_环比 FROM 城市成交情况 WHERE 同比 > 1 AND 近7日日均成交_环比 < 1 ORDER BY 同比 ASC"
     }
 ]

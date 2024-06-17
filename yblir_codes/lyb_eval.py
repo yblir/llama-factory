@@ -9,7 +9,7 @@ import json
 from loguru import logger
 import time
 import sys
-from llmtuner.eval.evaluator import Evaluator
+from llamafactory.eval.evaluator import Evaluator
 
 if __name__ == '__main__':
     with open('../examples/yblir_configs/lyb_qwen_eval.yaml', 'r', encoding='utf-8') as f:

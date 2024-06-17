@@ -47,16 +47,16 @@ CUDA_VISIBLE_DEVICES=0 llamafactory-cli train examples/lora_single_gpu/llama3_lo
 CUDA_VISIBLE_DEVICES=0 llamafactory-cli train examples/lora_single_gpu/llama3_lora_ppo.yaml
 ```
 
-#### DPO Training
+#### DPO/ORPO/SimPO Training
 
 ```bash
 CUDA_VISIBLE_DEVICES=0 llamafactory-cli train examples/lora_single_gpu/llama3_lora_dpo.yaml
 ```
 
-#### ORPO Training
+#### KTO Training
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 llamafactory-cli train examples/lora_single_gpu/llama3_lora_orpo.yaml
+CUDA_VISIBLE_DEVICES=0 llamafactory-cli train examples/lora_single_gpu/llama3_lora_kto.yaml
 ```
 
 #### Preprocess Dataset
@@ -107,22 +107,23 @@ CUDA_VISIBLE_DEVICES=0 llamafactory-cli train examples/qlora_single_gpu/llama3_l
 
 ### LoRA Fine-Tuning on Multiple GPUs
 
-#### Supervised Fine-Tuning with Accelerate on Single Node
+#### Supervised Fine-Tuning on Single Node
 
 ```bash
-bash examples/lora_multi_gpu/single_node.sh
+CUDA_VISIBLE_DEVICES=0,1,2,3 llamafactory-cli train examples/lora_multi_gpu/llama3_lora_sft.yaml
 ```
 
-#### Supervised Fine-Tuning with Accelerate on Multiple Nodes
+#### Supervised Fine-Tuning on Multiple Nodes
 
 ```bash
-bash examples/lora_multi_gpu/multi_node.sh
+CUDA_VISIBLE_DEVICES=0,1,2,3 NNODES=2 RANK=0 MASTER_ADDR=192.168.0.1 MASTER_PORT=29500 llamafactory-cli train examples/lora_multi_gpu/llama3_lora_sft.yaml
+CUDA_VISIBLE_DEVICES=0,1,2,3 NNODES=2 RANK=1 MASTER_ADDR=192.168.0.1 MASTER_PORT=29500 llamafactory-cli train examples/lora_multi_gpu/llama3_lora_sft.yaml
 ```
 
 #### Supervised Fine-Tuning with DeepSpeed ZeRO-3 (Weight Sharding)
 
 ```bash
-bash examples/lora_multi_gpu/ds_zero3.sh
+CUDA_VISIBLE_DEVICES=0,1,2,3 llamafactory-cli train examples/lora_multi_gpu/llama3_lora_sft_ds.yaml
 ```
 
 ### LoRA Fine-Tuning on Multiple NPUs
@@ -130,27 +131,28 @@ bash examples/lora_multi_gpu/ds_zero3.sh
 #### Supervised Fine-Tuning with DeepSpeed ZeRO-0
 
 ```bash
-bash examples/lora_multi_npu/ds_zero0.sh
+ASCEND_RT_VISIBLE_DEVICES=0,1,2,3 llamafactory-cli train examples/lora_multi_npu/llama3_lora_sft_ds.yaml
 ```
 
 ### Full-Parameter Fine-Tuning on Multiple GPUs
 
-#### Supervised Fine-Tuning with Accelerate on Single Node
+#### Supervised Fine-Tuning on Single Node
 
 ```bash
-bash examples/full_multi_gpu/single_node.sh
+CUDA_VISIBLE_DEVICES=0,1,2,3 llamafactory-cli train examples/full_multi_gpu/llama3_full_sft.yaml
 ```
 
-#### Supervised Fine-Tuning with Accelerate on Multiple Nodes
+#### Supervised Fine-Tuning on Multiple Nodes
 
 ```bash
-bash examples/full_multi_gpu/multi_node.sh
+CUDA_VISIBLE_DEVICES=0,1,2,3 NNODES=2 RANK=0 MASTER_ADDR=192.168.0.1 MASTER_PORT=29500 llamafactory-cli train examples/full_multi_gpu/llama3_full_sft.yaml
+CUDA_VISIBLE_DEVICES=0,1,2,3 NNODES=2 RANK=1 MASTER_ADDR=192.168.0.1 MASTER_PORT=29500 llamafactory-cli train examples/full_multi_gpu/llama3_full_sft.yaml
 ```
 
 #### Batch Predicting and Computing BLEU and ROUGE Scores
 
 ```bash
-bash examples/full_multi_gpu/predict.sh
+CUDA_VISIBLE_DEVICES=0,1,2,3 llamafactory-cli train examples/full_multi_gpu/llama3_full_predict.yaml
 ```
 
 ### Merging LoRA Adapters and Quantization
@@ -171,22 +173,24 @@ CUDA_VISIBLE_DEVICES=0 llamafactory-cli export examples/merge_lora/llama3_gptq.y
 
 ### Inferring LoRA Fine-Tuned Models
 
+Use `CUDA_VISIBLE_DEVICES=0,1` to infer models on multiple devices.
+
 #### Use CLI
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 llamafactory-cli chat examples/merge_lora/llama3_lora_sft.yaml
+CUDA_VISIBLE_DEVICES=0 llamafactory-cli chat examples/inference/llama3_lora_sft.yaml
 ```
 
 #### Use Web UI
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 llamafactory-cli webchat examples/merge_lora/llama3_lora_sft.yaml
+CUDA_VISIBLE_DEVICES=0 llamafactory-cli webchat examples/inference/llama3_lora_sft.yaml
 ```
 
 #### Launch OpenAI-style API
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 llamafactory-cli api examples/merge_lora/llama3_lora_sft.yaml
+CUDA_VISIBLE_DEVICES=0 llamafactory-cli api examples/inference/llama3_lora_sft.yaml
 ```
 
 ### Extras

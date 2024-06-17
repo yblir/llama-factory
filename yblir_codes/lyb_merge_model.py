@@ -5,7 +5,7 @@
 # explain  :
 # =======================================================
 import yaml
-from src.llmtuner.train.tuner import export_model
+from src.llamafactory.train.tuner import export_model
 
 if __name__ == "__main__":
     with open('../examples/yblir_configs/lyb_qwen_lora_sft_merge.yaml', 'r', encoding='utf-8') as f:

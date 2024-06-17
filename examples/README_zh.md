@@ -47,16 +47,16 @@ CUDA_VISIBLE_DEVICES=0 llamafactory-cli train examples/lora_single_gpu/llama3_lo
 CUDA_VISIBLE_DEVICES=0 llamafactory-cli train examples/lora_single_gpu/llama3_lora_ppo.yaml
 ```
 
-#### DPO 训练
+#### DPO/ORPO/SimPO 训练
 
 ```bash
 CUDA_VISIBLE_DEVICES=0 llamafactory-cli train examples/lora_single_gpu/llama3_lora_dpo.yaml
 ```
 
-#### ORPO 训练
+#### KTO 训练
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 llamafactory-cli train examples/lora_single_gpu/llama3_lora_orpo.yaml
+CUDA_VISIBLE_DEVICES=0 llamafactory-cli train examples/lora_single_gpu/llama3_lora_kto.yaml
 ```
 
 #### 预处理数据集
@@ -107,50 +107,52 @@ CUDA_VISIBLE_DEVICES=0 llamafactory-cli train examples/qlora_single_gpu/llama3_l
 
 ### 多 GPU LoRA 微调
 
-#### 使用 Accelerate 进行单节点训练
+#### 在单机上进行指令监督微调
 
 ```bash
-bash examples/lora_multi_gpu/single_node.sh
+CUDA_VISIBLE_DEVICES=0,1,2,3 llamafactory-cli train examples/lora_multi_gpu/llama3_lora_sft.yaml
 ```
 
-#### 使用 Accelerate 进行多节点训练
+#### 在多机上进行指令监督微调
 
 ```bash
-bash examples/lora_multi_gpu/multi_node.sh
+CUDA_VISIBLE_DEVICES=0,1,2,3 NNODES=2 RANK=0 MASTER_ADDR=192.168.0.1 MASTER_PORT=29500 llamafactory-cli train examples/lora_multi_gpu/llama3_lora_sft.yaml
+CUDA_VISIBLE_DEVICES=0,1,2,3 NNODES=2 RANK=1 MASTER_ADDR=192.168.0.1 MASTER_PORT=29500 llamafactory-cli train examples/lora_multi_gpu/llama3_lora_sft.yaml
 ```
 
 #### 使用 DeepSpeed ZeRO-3 平均分配显存
 
 ```bash
-bash examples/lora_multi_gpu/ds_zero3.sh
+CUDA_VISIBLE_DEVICES=0,1,2,3 llamafactory-cli train examples/lora_multi_gpu/llama3_lora_sft_ds.yaml
 ```
 
 ### 多 NPU LoRA 微调
 
-#### 使用 DeepSpeed ZeRO-0 训练
+#### 使用 DeepSpeed ZeRO-0 进行指令监督微调
 
 ```bash
-bash examples/lora_multi_npu/ds_zero0.sh
+ASCEND_RT_VISIBLE_DEVICES=0,1,2,3 llamafactory-cli train examples/lora_multi_npu/llama3_lora_sft_ds.yaml
 ```
 
 ### 多 GPU 全参数微调
 
-#### 使用 DeepSpeed 进行单节点训练
+#### 在单机上进行指令监督微调
 
 ```bash
-bash examples/full_multi_gpu/single_node.sh
+CUDA_VISIBLE_DEVICES=0,1,2,3 llamafactory-cli train examples/full_multi_gpu/llama3_full_sft.yaml
 ```
 
-#### 使用 DeepSpeed 进行多节点训练
+#### 在多机上进行指令监督微调
 
 ```bash
-bash examples/full_multi_gpu/multi_node.sh
+CUDA_VISIBLE_DEVICES=0,1,2,3 NNODES=2 RANK=0 MASTER_ADDR=192.168.0.1 MASTER_PORT=29500 llamafactory-cli train examples/full_multi_gpu/llama3_full_sft.yaml
+CUDA_VISIBLE_DEVICES=0,1,2,3 NNODES=2 RANK=1 MASTER_ADDR=192.168.0.1 MASTER_PORT=29500 llamafactory-cli train examples/full_multi_gpu/llama3_full_sft.yaml
 ```
 
 #### 批量预测并计算 BLEU 和 ROUGE 分数
 
 ```bash
-bash examples/full_multi_gpu/predict.sh
+CUDA_VISIBLE_DEVICES=0,1,2,3 llamafactory-cli train examples/full_multi_gpu/llama3_full_predict.yaml
 ```
 
 ### 合并 LoRA 适配器与模型量化
@@ -171,22 +173,24 @@ CUDA_VISIBLE_DEVICES=0 llamafactory-cli export examples/merge_lora/llama3_gptq.y
 
 ### 推理 LoRA 模型
 
+使用 `CUDA_VISIBLE_DEVICES=0,1` 进行多卡推理。
+
 #### 使用命令行接口
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 llamafactory-cli chat examples/merge_lora/llama3_lora_sft.yaml
+CUDA_VISIBLE_DEVICES=0 llamafactory-cli chat examples/inference/llama3_lora_sft.yaml
 ```
 
 #### 使用浏览器界面
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 llamafactory-cli webchat examples/merge_lora/llama3_lora_sft.yaml
+CUDA_VISIBLE_DEVICES=0 llamafactory-cli webchat examples/inference/llama3_lora_sft.yaml
 ```
 
 #### 启动 OpenAI 风格 API
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 llamafactory-cli api examples/merge_lora/llama3_lora_sft.yaml
+CUDA_VISIBLE_DEVICES=0 llamafactory-cli api examples/inference/llama3_lora_sft.yaml
 ```
 
 ### 杂项
