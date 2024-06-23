@@ -41,9 +41,9 @@ def qwen_preprocess(tokenizer_, msg):
 
 if __name__ == '__main__':
 
-    model_path = '/media/xk/D6B8A862B8A8433B/data/qwen1_5-1_8b_merge_800'
+    model_path = r'E:\PyCharm\project_result\qwen2_15b_sft'
     # model_path = '/media/xk/D6B8A862B8A8433B/data/qwen1_5-1_8b'
-    data_path = '/media/xk/D6B8A862B8A8433B/GitHub/llama-factory/data/train_clean_test.json'
+    data_path = r'E:\GitHub\llama-factory\data\train_clean_test.json'
 
     with open(data_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
@@ -64,16 +64,16 @@ if __name__ == '__main__':
 
         generated_ids = model.generate(
                 model_inputs.input_ids,
-                max_new_tokens=20,  # 最大输出长度.
+                max_new_tokens=200,  # 最大输出长度.
                 attention_mask=attention_mask,
                 pad_token_id=tokenizer.eos_token_id,
                 do_sample=True,
-                num_beams=6,
+                num_beams=1,
                 # repetition_penalty=2.0,
                 top_k=4,
                 top_p=0.5,
                 early_stopping=True,
-                num_return_sequences=3
+                num_return_sequences=1
         )
         # print(generated_ids)
         # generated_ids = [

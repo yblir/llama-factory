@@ -32,7 +32,7 @@ RUN EXTRA_PACKAGES="metrics"; \
         EXTRA_PACKAGES="${EXTRA_PACKAGES},deepspeed"; \
     fi; \
     pip install -e .[$EXTRA_PACKAGES] && \
-    pip uninstall -y transformer-engine
+    pip uninstall -y transformer-engine flash-attn
 
 # Set up volumes
 VOLUME [ "/root/.cache/huggingface/", "/app/data", "/app/output" ]
@@ -42,3 +42,6 @@ EXPOSE 7860
 
 # Expose port 8000 for the API service
 EXPOSE 8000
+
+# Launch LLaMA Board
+CMD [ "llamafactory-cli", "webui" ]
