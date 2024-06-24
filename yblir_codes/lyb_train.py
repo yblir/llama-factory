@@ -14,7 +14,7 @@ def main(yaml_path_):
 
 
 if __name__ == "__main__":
-    # yaml_path = '../examples/yblir_configs/llama3_lora_reward.yaml'
-    yaml_path = '../examples/yblir_configs/llama3_lora_reward_raw.yaml'
+    yaml_path = '../examples/yblir_configs/llama3_lora_reward.yaml'
+    # yaml_path = '../examples/yblir_configs/llama3_lora_reward_raw.yaml'
 
     main(yaml_path)
