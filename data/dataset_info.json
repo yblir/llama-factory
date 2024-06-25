@@ -8,7 +8,7 @@
     }
   },
     "rw_data": {
-      "file_name": "dpo_en_demo.json",
+      "file_name": "rw_data2.json",
       "ranking": true,
       "formatting": "sharegpt",
       "columns": {

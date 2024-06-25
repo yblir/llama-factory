@@ -12,12 +12,12 @@ import sys
 from src.llamafactory.chat import ChatModel
 
 if __name__ == '__main__':
-    with open('../examples/yblir_configs/lyb_qwen_lora_merge_vllm.yaml', 'r', encoding='utf-8') as f:
+    with open('../examples/yblir_configs/lyb_qwen_sft_predict.yaml', 'r', encoding='utf-8') as f:
         param = yaml.safe_load(f)
 
     chat_model = ChatModel(param)
 
-    with open('/mnt/g/GoogleDownload/tuning_sample.json', 'r', encoding='utf-8') as f:
+    with open('../data/tuning_sample.json', 'r', encoding='utf-8') as f:
         data = json.load(f)
 
     # 预热
@@ -33,6 +33,7 @@ if __name__ == '__main__':
         total_time += time.time() - t1
         predict_1000.append(res[0].response_text)
         print(res[0].response_text)
+        sys.exit()
         if (i + 1) % 100 == 0:
             logger.info(f'当前完成: {i + 1}')
             # sys.exit()

@@ -1,15 +1,15 @@
 # model
 #model_name_or_path: E:\PyCharm\PreTrainModel\qwen_7b_chat
 #adapter_name_or_path: E:\PyCharm\insteresting\LLaMA-Factory-0.7.1\src\saves\qwen_7b_chat_sft\checkpoint-200
-model_name_or_path: /mnt/e/PyCharm/PreTrainModel/qwen_7b_chat
-adapter_name_or_path: /mnt/e/PyCharm/insteresting/LLaMA-Factory-0.7.1/src/saves/qwen_7b_chat_sft/checkpoint-200
+model_name_or_path: /media/xk/D6B8A862B8A8433B/data/qwen2_05b
+adapter_name_or_path: /media/xk/D6B8A862B8A8433B/data/qwen2_15b_sft/checkpoint-300
 
-#stage: sft
+stage: sft
 finetuning_type: lora
 #lora_target: all
 #quantization_bit: 8
 
-infer_backend: vllm
+#infer_backend: vllm
 
 # dataset
 template: qwen
