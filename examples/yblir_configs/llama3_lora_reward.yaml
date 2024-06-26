@@ -1,6 +1,6 @@
 # 训练奖励模型
 ### model
-model_name_or_path: /media/xk/D6B8A862B8A8433B/data/qwen2_05b
+model_name_or_path: /mnt/e/PyCharm/PreTrainModel/qwen2_7b
 
 ### method
 stage: rm
@@ -13,12 +13,12 @@ dataset: rw_data
 dataset_dir: ../data
 template: qwen
 cutoff_len: 1024
-max_samples: 1000
+max_samples: 3000
 overwrite_cache: true
 preprocessing_num_workers: 1
 
 ### output
-output_dir: /media/xk/D6B8A862B8A8433B/data/qwen2_15b_rw
+output_dir: /mnt/e/PyCharm/PreTrainModel/qwen2_7b_rm
 logging_steps: 10
 save_steps: 100
 plot_loss: true
@@ -36,6 +36,6 @@ ddp_timeout: 180000000
 
 ### eval
 val_size: 0.1
-per_device_eval_batch_size: 1
+per_device_eval_batch_size: 2
 eval_strategy: steps
 eval_steps: 500

@@ -1,3 +1,8 @@
+import os
+import sys
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from src.llamafactory.train.tuner import run_exp
 import yaml
 
@@ -14,11 +19,11 @@ def main(yaml_path_):
 
 
 if __name__ == "__main__":
+    # 训练奖励模型
     # yaml_path = '../examples/yblir_configs/llama3_lora_reward.yaml'
-    # yaml_path = '../examples/yblir_configs/llama3_lora_reward_raw.yaml'
     # 奖励模型评分
-    #yaml_path = '../examples/yblir_configs/llama3_lora_predict.yaml'
-    #stf qwen train
+    # yaml_path = '../examples/yblir_configs/llama3_lora_predict.yaml'
+    # 训练sft模型
     # yaml_path = '../examples/yblir_configs/lyb_qwen_lora_sft.yaml'
     # ppo训练
     yaml_path = '../examples/yblir_configs/llama3_lora_ppo.yaml'

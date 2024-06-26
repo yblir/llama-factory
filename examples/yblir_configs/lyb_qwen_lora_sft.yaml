@@ -1,6 +1,6 @@
 # model
-#model_name_or_path: E:\PyCharm\PreTrainModel\qwen_7b_chat
-model_name_or_path: /media/xk/D6B8A862B8A8433B/data/qwen2_05b
+model_name_or_path: E:\PyCharm\PreTrainModel\qwen2_7b
+#model_name_or_path: /media/xk/D6B8A862B8A8433B/data/qwen2_05b
 # method
 stage: sft
 do_train: true
@@ -17,7 +17,7 @@ overwrite_cache: true
 preprocessing_num_workers: 2
 
 # output
-output_dir: /media/xk/D6B8A862B8A8433B/data/qwen2_15b_sft
+output_dir: E:\PyCharm\PreTrainModel\qwen2_7b_sft
 logging_steps: 10
 save_steps: 100
 plot_loss: true

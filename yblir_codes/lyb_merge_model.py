@@ -4,7 +4,12 @@
 # @File    : lyb_merge_model.py
 # explain  :
 # =======================================================
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import yaml
+
 from src.llamafactory.train.tuner import export_model
 
 if __name__ == "__main__":
