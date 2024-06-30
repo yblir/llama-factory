@@ -16,20 +16,20 @@ template: qwen
 cutoff_len: 1024
 max_samples: 2000
 overwrite_cache: true
-preprocessing_num_workers: 2
+preprocessing_num_workers: 1
 
 ### output
-output_dir: /mnt/e/PyCharm/PreTrainModel/qwen2_7b_sql_ppo
+output_dir: /mnt/e/PyCharm/PreTrainModel/qwen2_7b_sql_ppo_1_batch
 logging_steps: 10
 save_steps: 100
 plot_loss: true
 overwrite_output_dir: true
 
 ### train
-per_device_train_batch_size: 2
-gradient_accumulation_steps: 4
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 8
 learning_rate: 1.0e-5
-num_train_epochs: 3.0
+num_train_epochs: 2.0
 lr_scheduler_type: cosine
 warmup_ratio: 0.1
 fp16: true

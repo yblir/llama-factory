@@ -32,11 +32,12 @@ if __name__ == '__main__':
         res = chat_model.chat(messages)
         total_time += time.time() - t1
         predict_1000.append(res[0].response_text)
-        print(res[0].response_text)
-        sys.exit()
-        if (i + 1) % 100 == 0:
-            logger.info(f'当前完成: {i + 1}')
-            # sys.exit()
+        # print('-------------------------------------------------')
+        print(i, res[0].response_text)
+        # sys.exit()
+        if (i + 1) % 10 == 0:
+            # logger.info(f'当前完成: {i + 1}')
+            sys.exit()
         if i + 1 == 300:
             break
 
