@@ -2,8 +2,8 @@
 ### model
 #model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
 #adapter_name_or_path: saves/llama3-8b/lora/sft
-model_name_or_path: /media/xk/D6B8A862B8A8433B/data/qwen2_05b
-adapter_name_or_path: /media/xk/D6B8A862B8A8433B/data/qwen2_15b_rw
+model_name_or_path: /media/xk/D6B8A862B8A8433B/data/qwen2_05b_sft_merge
+adapter_name_or_path: /media/xk/D6B8A862B8A8433B/data/qwen2_15b_sft/checkpoint-300
 ### method
 stage: rm
 do_predict: true

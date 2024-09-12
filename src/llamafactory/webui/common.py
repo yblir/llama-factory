@@ -47,6 +47,8 @@ DEFAULT_CONFIG_DIR = "config"
 DEFAULT_DATA_DIR = "data"
 DEFAULT_SAVE_DIR = "saves"
 USER_CONFIG = "user_config.yaml"
+QUANTIZATION_BITS = ["8", "6", "5", "4", "3", "2", "1"]
+GPTQ_BITS = ["8", "4", "3", "2"]
 
 
 def get_save_dir(*paths: str) -> os.PathLike:
@@ -120,16 +122,15 @@ def get_prefix(model_name: str) -> str:
     return model_name.split("-")[0]
 
 
-def get_model_info(model_name: str) -> Tuple[str, str, bool]:
+def get_model_info(model_name: str) -> Tuple[str, str]:
     r"""
     Gets the necessary information of this model.
 
     Returns:
         model_path (str)
         template (str)
-        visual (bool)
     """
-    return get_model_path(model_name), get_template(model_name), get_visual(model_name)
+    return get_model_path(model_name), get_template(model_name)
 
 
 def get_template(model_name: str) -> str:
@@ -172,8 +173,8 @@ def load_dataset_info(dataset_dir: str) -> Dict[str, Dict[str, Any]]:
     r"""
     Loads dataset_info.json.
     """
-    if dataset_dir == "ONLINE":
-        logger.info("dataset_dir is ONLINE, using online dataset.")
+    if dataset_dir == "ONLINE" or dataset_dir.startswith("REMOTE:"):
+        logger.info("dataset_dir is {}, using online dataset.".format(dataset_dir))
         return {}
 
     try:
