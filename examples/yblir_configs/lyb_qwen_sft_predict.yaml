@@ -1,9 +1,13 @@
 # model
-model_name_or_path: E:\PyCharm\PreTrainModel\qwen2_7b_sft_merge
-adapter_name_or_path: E:\PyCharm\PreTrainModel\qwen2_7b_sql_ppo_1_batch
+#model_name_or_path: E:\PyCharm\PreTrainModel\qwen2_7b_sft_merge
+#adapter_name_or_path: E:\PyCharm\PreTrainModel\qwen2_7b_sql_ppo_1_batch
+
 #adapter_name_or_path: E:\PyCharm\PreTrainModel\qwen2_7b_sft
 #model_name_or_path: /media/xk/D6B8A862B8A8433B/data/qwen2_05b
 #adapter_name_or_path: /media/xk/D6B8A862B8A8433B/data/qwen2_15b_sft/checkpoint-300
+
+model_name_or_path: /mnt/e/PyCharm/PreTrainModel/qwen2_7b
+adapter_name_or_path: /mnt/e/PyCharm/PreTrainModel/qwen2_7b_dpo
 
 stage: sft
 finetuning_type: lora

@@ -17,7 +17,7 @@ def main(yaml_path_):
 #     # For xla_spawn (TPUs)
 #     run_exp()
 
-
+# 7ef9b4fd324f9a6e50ac8dcd164ec2c6f8c30dbb
 if __name__ == "__main__":
     # 训练奖励模型
     # yaml_path = '../examples/yblir_configs/llama3_lora_reward.yaml'
@@ -26,6 +26,9 @@ if __name__ == "__main__":
     # 训练sft模型
     # yaml_path = '../examples/yblir_configs/lyb_qwen_lora_sft.yaml'
     # ppo训练
-    yaml_path = '../examples/yblir_configs/llama3_lora_ppo.yaml'
+    # yaml_path = '../examples/yblir_configs/llama3_lora_ppo.yaml'
+
+    # dpo训练
+    yaml_path='../examples/yblir_configs/yblir_lora_dpo.yaml'
 
     main(yaml_path)
