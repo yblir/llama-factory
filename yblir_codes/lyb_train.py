@@ -1,6 +1,8 @@
 import os
 import sys
 
+os.environ['FORCE_TORCHRUN']="1"
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.llamafactory.train.tuner import run_exp
@@ -29,6 +31,6 @@ if __name__ == "__main__":
     # yaml_path = '../examples/yblir_configs/llama3_lora_ppo.yaml'
 
     # dpo训练
-    yaml_path='../examples/yblir_configs/yblir_lora_dpo.yaml'
+    yaml_path='../examples/yblir_configs/yblir_lora_sft_ds3.yaml'
 
     main(yaml_path)
